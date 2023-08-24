@@ -15,16 +15,20 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (player != null)
+        {
 
-        if (distanceToPlayer <= attackRange && GameManager.Instance.isAttack)
-        {
-            Attack();
-           /* StartCoroutine(AttackCooldown());*/
-        }
-        else if (!GameManager.Instance.isAttack && distanceToPlayer <= attackRange)
-        {
-            StartCoroutine(AttackCooldown());
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            if (distanceToPlayer <= attackRange && GameManager.Instance.isAttack)
+            {
+                Attack();
+                /* StartCoroutine(AttackCooldown());*/
+            }
+            else if (!GameManager.Instance.isAttack && distanceToPlayer <= attackRange)
+            {
+                StartCoroutine(AttackCooldown());
+            }
         }
     }
 
