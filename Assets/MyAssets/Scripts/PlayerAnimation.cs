@@ -58,5 +58,12 @@ public class PlayerAnimation : MonoBehaviour
     public void HurtAnimation()
     {
         animator.SetBool(HURT, true);
+        
+    }
+    public void StopHurtAnimation()
+    {
+        animator.SetBool(HURT, false);
+        Debug.Log("called hurt");
+
     }
 }

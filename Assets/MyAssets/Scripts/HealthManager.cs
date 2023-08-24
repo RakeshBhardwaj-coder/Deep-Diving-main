@@ -65,9 +65,8 @@ public class HealthManager : MonoBehaviour
     {
         if (currentHearts > 0)
         {
-           
-                currentHearts--;
-            SoundManager.Instance.PlayHitttingAudio();
+
+            currentHearts--;
             heartsContainer.GetChild(currentHearts).GetComponent<Image>().sprite = emptyHeartSprite;
            
           

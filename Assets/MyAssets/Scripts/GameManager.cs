@@ -33,8 +33,12 @@ public class GameManager : MonoBehaviour
     }
     public void ReduceHealth(int damage)
     {
+        PlayerAnimation.Instance.HurtAnimation();
         HealthManager.Instance.ReduceHealth(damage);
+        SoundManager.Instance.PlayHitttingAudio(); //sound
         isAttack = false;
+       
+
     }
 
 }

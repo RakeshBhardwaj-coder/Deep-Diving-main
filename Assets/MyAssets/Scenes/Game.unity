@@ -536,6 +536,47 @@ Transform:
   m_Father: {fileID: 1324599653}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &126052910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6829650457327806017, guid: 219cad34e425a374689a2b29dea077b5, type: 3}
+  m_PrefabInstance: {fileID: 6829650455616803594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &126052917
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126052910}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.13
+  m_Speed: 0.2
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.2
+  m_BaseOffset: 0.1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &126052918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126052910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9982f9ba8040947b41937d230b8991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveRange: 5
+  moveInterval: 3
 --- !u!1 &178281349
 GameObject:
   m_ObjectHideFlags: 0
