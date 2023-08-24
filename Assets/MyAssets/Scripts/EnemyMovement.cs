@@ -1,18 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float moveRange = 10f;
+    public float moveInterval = 3f;
+
+    private NavMeshAgent navMeshAgent;
+    private Vector3 randomPosition;
+    private float timeSinceLastMove = 0f;
+
+    private void Start()
     {
-        
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        SetRandomDestination();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        timeSinceLastMove += Time.deltaTime;
+
+        if (timeSinceLastMove >= moveInterval)
+        {
+            SetRandomDestination();
+        }
+    }
+
+    private void SetRandomDestination()
+    {
+        randomPosition = transform.position + Random.insideUnitSphere * moveRange;
+        NavMeshHit navHit;
+
+        if (NavMesh.SamplePosition(randomPosition, out navHit, moveRange, NavMesh.AllAreas))
+        {
+            navMeshAgent.SetDestination(navHit.position);
+            timeSinceLastMove = 0f;
+        }
     }
 }

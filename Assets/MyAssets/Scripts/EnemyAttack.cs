@@ -23,6 +23,7 @@ public class EnemyAttack : MonoBehaviour
             if (distanceToPlayer <= attackRange && GameManager.Instance.isAttack)
             {
                 Attack();
+
                 /* StartCoroutine(AttackCooldown());*/
             }
             else if (!GameManager.Instance.isAttack && distanceToPlayer <= attackRange)

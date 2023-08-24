@@ -9,6 +9,7 @@ public class PlayerDestruction : MonoBehaviour
     {
         Instantiate(destructionVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        SoundManager.Instance.PlayExplosionAudio();
         isPlayerDestoryed = true;
        
     }

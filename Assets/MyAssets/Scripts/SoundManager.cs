@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
-    public AudioClip gameAudio;
+    public AudioClip explosionSFX;
+    public AudioClip[] hittingSFX;
+    private AudioSource audioSource;
     //Singlton
     private static SoundManager _instance;
 
@@ -19,5 +21,16 @@ public class SoundManager : MonoBehaviour
 
             return _instance;
         }
+    }
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    public void PlayExplosionAudio()
+    {
+        audioSource.PlayOneShot(explosionSFX);
+    }public void PlayHitttingAudio()
+    {
+        audioSource.PlayOneShot(hittingSFX[Random.Range(0,hittingSFX.Length)]);
     }
 }
