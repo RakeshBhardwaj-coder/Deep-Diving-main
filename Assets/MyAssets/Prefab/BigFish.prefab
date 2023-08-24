@@ -15,12 +15,13 @@ GameObject:
   - component: {fileID: 7084672705860470974}
   - component: {fileID: -7623752279610658406}
   - component: {fileID: 6411228671602948351}
+  - component: {fileID: 1997160372934509401}
   m_Layer: 0
   m_Name: BigFish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7084672705860470968
 Transform:
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 645416927, guid: 2ba396bc025f32746b98b20cbdab5491, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -168,3 +169,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveRange: 10
   moveInterval: 3
+--- !u!195 &1997160372934509401
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084672705860470975}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.2
+  m_Speed: 0.2
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.25
+  m_BaseOffset: 0.195
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

@@ -12,7 +12,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+       
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        //shouldn't rotate the objects in xy plane 
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
         SetRandomDestination();
     }
 
