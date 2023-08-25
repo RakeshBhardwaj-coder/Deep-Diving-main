@@ -21,47 +21,53 @@ public class ScoreManager : MonoBehaviour
             return _instance;
         }
     }
-    public GameObject gamPrefab;
-    public Transform scoreSpawnPoint;
-    TMP_Text gamScore;
-    private int score = 0;
+    public GameObject[] gamPrefab;
+    public Transform gamSpawningPosition;
+   
+    public Sprite[] gamSprite;
+    private int[] gamScore;
+    private int rubyGam = 0;
+    private int diamondGam = 0;
     void Start()
     {
-        CreateGamUI();
+        gamScore = new int []{ 0, 0, 0 };
+        InitializeGams();
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            IncreaseScore();
+           
         }
     }
 
-    private void IncreaseScore()
+
+    private void InitializeGams()
     {
-        score++;
-        UpdateScore();
+        for (int i = 0; i < gamSprite.Length; i++)
+        {
+            GameObject gamUI = Instantiate(gamPrefab[i], gamSpawningPosition);
+            Image gamImage = gamUI.GetComponent<Image>();
+            TMP_Text gamScoreTxt = gamUI.GetComponent<TMP_Text>();
+            // Find the child TMP Text component by name
+            TextMeshProUGUI childTMPText = gamUI.transform.Find("gamText").GetComponent<TextMeshProUGUI>();
+
+            if (childTMPText != null)
+            {
+                childTMPText.text = gamScore[i]+"";
+            }
+            else
+            {
+                Debug.LogWarning("Error in ScoreManager GamText");
+            }
+          
+            gamUI.transform.localPosition = Vector3.right  * gamImage.rectTransform.sizeDelta.x * i/1.2f;
+        }
     }
-
-    private void CreateGamUI()
+    public void UpdateScore(int position)
     {
-        // Instantiate the score UI prefab at the spawn point
-        GameObject gamUI = Instantiate(gamPrefab, scoreSpawnPoint);
-        // Get the Image and Text components from the UI prefab
-        Image gamImage = gamUI.GetComponentInChildren<Image>();
-        gamScore = gamUI.GetComponentInChildren<TMP_Text>();
-     /*   gamUI.transform.localPosition = Vector3.right  * gamImage.rectTransform.sizeDelta.x;*/
-
-
-
-        // Set the score text
-        gamScore.text = score.ToString();
-
-        // Optionally, you can update other UI elements here (e.g., animations, sounds)
-    }
-    void UpdateScore()
-    {
-        gamScore.text = score.ToString();
-
+        gamScore[position]++;
+        string arrayValues = string.Join(", ", gamScore);
+        Debug.Log("Array values: " + arrayValues);
     }
 }

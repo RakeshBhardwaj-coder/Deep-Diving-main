@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4388301861764682699}
-  m_LocalRotation: {x: -0, y: -0, z: 0.3456675, w: -0.9383571}
+  m_LocalRotation: {x: 0, y: 0, z: -0.34566677, w: 0.9383574}
   m_LocalPosition: {x: 8.799, y: -1.89, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08654985, z: 0.08654985}
   m_ConstrainProportionsScale: 1
@@ -134,4 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e689a5e2bfd2143ae514eb440f045a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treasureType: 2
+  gamIndex: 2
