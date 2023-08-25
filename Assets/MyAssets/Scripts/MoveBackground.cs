@@ -15,13 +15,16 @@ public class MoveBackground : MonoBehaviour
 
     private void Update()
     {
-        float playerMovement = player.position.x;
+        if (player != null)
+        {
+            float playerMovement = player.position.x;
 
-        // Calculate the background's new position
-        float backgroundX = initialBackgroundPosition.x + (playerMovement * parallaxSpeed);
-        backgroundX = Mathf.Clamp(backgroundX, initialBackgroundPosition.x - stationaryAreaWidth, initialBackgroundPosition.x + stationaryAreaWidth);
+            // Calculate the background's new position
+            float backgroundX = initialBackgroundPosition.x + (playerMovement * parallaxSpeed);
+            backgroundX = Mathf.Clamp(backgroundX, initialBackgroundPosition.x - stationaryAreaWidth, initialBackgroundPosition.x + stationaryAreaWidth);
 
-        // Apply the new position to the background
-        transform.position = new Vector3(backgroundX, transform.position.y, transform.position.z);
+            // Apply the new position to the background
+            transform.position = new Vector3(backgroundX, transform.position.y, transform.position.z);
+        }
     }
 }

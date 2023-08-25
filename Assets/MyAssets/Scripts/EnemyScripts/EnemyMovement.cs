@@ -1,45 +1,35 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float moveRange = 10f;
-    public float moveInterval = 3f;
+    public Transform centerPoint; // Assign the center point in the Inspector
+    public float movementRadius = 5f;
+    public float moveSpeed = 2f;
 
-    private NavMeshAgent navMeshAgent;
-    private Vector3 randomPosition;
-    private float timeSinceLastMove = 0f;
+    private Vector2 initialPosition;
 
     private void Start()
     {
-       
-        navMeshAgent = GetComponent<NavMeshAgent>();
-
-        //shouldn't rotate the objects in xy plane 
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
-        SetRandomDestination();
+        initialPosition = transform.position;
     }
 
     private void Update()
     {
-        timeSinceLastMove += Time.deltaTime;
+        // Calculate the target position within the movement area
+        Vector2 targetPosition2D = initialPosition + Random.insideUnitCircle * movementRadius;
 
-        if (timeSinceLastMove >= moveInterval)
-        {
-            SetRandomDestination();
-        }
-    }
+        // Calculate the movement direction
+        Vector2 moveDirection = (targetPosition2D - (Vector2)transform.position).normalized;
 
-    private void SetRandomDestination()
-    {
-        randomPosition = transform.position + Random.insideUnitSphere * moveRange;
-        NavMeshHit navHit;
+        // Move the enemy
+        transform.position += (Vector3)moveDirection * moveSpeed * Time.deltaTime;
 
-        if (NavMesh.SamplePosition(randomPosition, out navHit, moveRange, NavMesh.AllAreas))
-        {
-            navMeshAgent.SetDestination(navHit.position);
-            timeSinceLastMove = 0f;
-        }
+        // Clamp the position within the movement area
+        Vector2 clampedPosition = new Vector2(
+            Mathf.Clamp(transform.position.x, initialPosition.x - movementRadius, initialPosition.x + movementRadius),
+            Mathf.Clamp(transform.position.y, initialPosition.y - movementRadius, initialPosition.y + movementRadius)
+        );
+
+        transform.position = clampedPosition;
     }
 }
