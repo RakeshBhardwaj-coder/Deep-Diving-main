@@ -4642,6 +4642,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3ab1ed3d87733dd46a6d1a5ab3fe99ef, type: 3}
   - {fileID: 8300000, guid: a70b8fd9bbb265745bc310671869c4b0, type: 3}
   - {fileID: 8300000, guid: 097cea89d3c91ce48a14c011ad8e4eef, type: 3}
+  coinSFX:
+  - {fileID: 8300000, guid: b7446d66b79282848a70dcb1cfcf8ced, type: 3}
+  - {fileID: 8300000, guid: 8f56460ea48e1f74ebba94998d96315a, type: 3}
+  - {fileID: 8300000, guid: 78f971bf44f4c584dbdc952a1dfa6451, type: 3}
 --- !u!4 &2000581264
 Transform:
   m_ObjectHideFlags: 0

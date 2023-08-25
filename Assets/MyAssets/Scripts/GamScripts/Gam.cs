@@ -18,6 +18,7 @@ public class Gam : MonoBehaviour
         {
             score++;
             ScoreManager.Instance.UpdateScore(index,score);
+            SoundManager.Instance.CoinAudioPlay(index);
             Destroy(gameObject);
         }
     }
