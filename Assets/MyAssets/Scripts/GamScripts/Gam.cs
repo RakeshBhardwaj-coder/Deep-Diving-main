@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class Treasure : MonoBehaviour
+public class Gam : MonoBehaviour
 {
 
-    public TreasureType treasureType;
-    private TreasureDefination treasureDefination;
+    public GamType GamType;
+    private GamDefination GamDefination;
 
     private void Awake()
     {
-        treasureDefination = new TreasureDefination(treasureType);
+        GamDefination = new GamDefination(GamType);
 
     }
     private void OnTriggerEnter2D(Collider2D otherCollider)
@@ -18,6 +18,7 @@ public class Treasure : MonoBehaviour
         // Check if the collision happened with a specific tag.
         if (otherCollider.CompareTag("Player"))
         {
+            Destroy(gameObject);
         }
     }
 }

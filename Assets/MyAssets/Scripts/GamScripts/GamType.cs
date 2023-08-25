@@ -1,4 +1,4 @@
-public enum TreasureType
+public enum GamType
 {
     Gold,
     Diamond,

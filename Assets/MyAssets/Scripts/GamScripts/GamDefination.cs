@@ -2,33 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreasureDefination : MonoBehaviour
+public class GamDefination : MonoBehaviour
 {
-    public TreasureType Type { get; private set; }
+    public GamType Type { get; private set; }
     public int Power { get; private set; }
     public string Ability { get; private set; }
 
-    public TreasureDefination(TreasureType type)
+    public GamDefination(GamType type)
     {
         Type = type;
         SetAttributesByType(type);
     }
 
-    private void SetAttributesByType(TreasureType type)
+    private void SetAttributesByType(GamType type)
     {
         switch (type)
         {
-            case TreasureType.Gold:
+            case GamType.Gold:
                 Power = 0;
                 Ability = "Melee Attack";
                 break;
 
-            case TreasureType.Diamond:
+            case GamType.Diamond:
                 Power = 1;
                 Ability = "Ranged Attack";
                 break;
 
-            case TreasureType.Ruby:
+            case GamType.Ruby:
                 Power = 1;
                 Ability = "Area of Effect Attack";
                 break;
