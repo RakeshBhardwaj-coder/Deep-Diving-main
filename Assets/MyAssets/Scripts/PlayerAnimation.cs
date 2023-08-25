@@ -23,7 +23,7 @@ public class PlayerAnimation : MonoBehaviour
     string IDEAL = "IsIdeal";
     string SWIMMING = "IsSwimming";
     string DIVING = "IsDiving";
-    string RUSH = "Rush";
+    string RUSH = "IsRush";
     string HURT = "IsHurted";
 
     Animator animator;
@@ -43,12 +43,16 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetBool(DIVING, false);
         animator.SetBool(SWIMMING, false);
+        animator.SetBool(HURT, false);
     }
     public void DivingAnimation(bool isDiving)
     {
         animator.SetBool(DIVING, isDiving);
     }
-  
+    public void RushAnimation(bool isRushing)
+    {
+        animator.SetBool(RUSH, isRushing);
+    }
     public void SwimmingAnimation()
     {
         animator.SetBool(SWIMMING, true);
@@ -63,7 +67,6 @@ public class PlayerAnimation : MonoBehaviour
     public void StopHurtAnimation()
     {
         animator.SetBool(HURT, false);
-        Debug.Log("called hurt");
 
     }
 }

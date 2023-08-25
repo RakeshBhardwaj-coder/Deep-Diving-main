@@ -2,34 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class EnemyDefination : MonoBehaviour
+public class TreasureDefination : MonoBehaviour
 {
-    public EnemyType Type { get; private set; }
+    public TreasureType Type { get; private set; }
     public int Power { get; private set; }
     public string Ability { get; private set; }
 
-    public EnemyDefination(EnemyType type)
+    public TreasureDefination(TreasureType type)
     {
         Type = type;
         SetAttributesByType(type);
     }
 
-    private void SetAttributesByType(EnemyType type)
+    private void SetAttributesByType(TreasureType type)
     {
         switch (type)
         {
-            case EnemyType.Fish:
+            case TreasureType.Gold:
                 Power = 0;
                 Ability = "Melee Attack";
                 break;
 
-            case EnemyType.DartFish:
+            case TreasureType.Diamond:
                 Power = 1;
                 Ability = "Ranged Attack";
                 break;
 
-            case EnemyType.BigFish:
+            case TreasureType.Ruby:
                 Power = 1;
                 Ability = "Area of Effect Attack";
                 break;
