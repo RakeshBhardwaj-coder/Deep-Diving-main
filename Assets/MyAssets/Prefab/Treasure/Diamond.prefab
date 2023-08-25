@@ -133,4 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e689a5e2bfd2143ae514eb440f045a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamIndex: 1
+  index: 1
+  score: 0

@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 3395872914387787420}
   - component: {fileID: 3395872914387787419}
   m_Layer: 5
-  m_Name: GoldGamUIPrefab
+  m_Name: DiamondGamUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

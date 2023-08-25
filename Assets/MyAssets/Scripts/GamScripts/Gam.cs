@@ -3,7 +3,8 @@ using UnityEngine;
 public class Gam : MonoBehaviour
 {
 
-    public int gamIndex;
+    public int index;
+    public int score;
 
     private void Awake()
     {
@@ -15,7 +16,8 @@ public class Gam : MonoBehaviour
         // Check if the collision happened with a specific tag.
         if (otherCollider.CompareTag("Player"))
         {
-            ScoreManager.Instance.UpdateScore(gamIndex);
+            score++;
+            ScoreManager.Instance.UpdateScore(index,score);
             Destroy(gameObject);
         }
     }
