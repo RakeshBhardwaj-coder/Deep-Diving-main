@@ -34,7 +34,10 @@ public class UIManager : MonoBehaviour
             yield return null; // Wait for the next frame
         }
     }
-
+    void Update()
+    {
+        VolumeSliderChanged();
+    }
     public void OptionsButtonClicked()
     {
         // Handle options menu UI or settings

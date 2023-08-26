@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject gameOverPanel;
+    public GameObject gameCanvas;
+    public GameObject gameTutorialCanvas;
+    private bool isGameOver = false;
+    public Animator pauseGameAnim;
     //Singlton
     private static GameManager _instance;
 
@@ -26,10 +32,42 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        isGameOver = true;
+        gameOverPanel.SetActive(true);
+        gameCanvas.SetActive(false);
+        gameTutorialCanvas.SetActive(false);
     }
     public void PauseGame()
     {
-        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        pauseGameAnim.SetBool("isPaused", true);
+      /*  Time.timeScale = Time.timeScale == 0 ? 1 : 0;*/ // same button for pause and unPause
+    }
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        pauseGameAnim.SetBool("isPaused", false);
+
+    }
+
+    public void RestartGame()
+    {
+        // Reset game variables and scene
+        isGameOver = false;
+        gameOverPanel.SetActive(false);
+        gameCanvas.SetActive(true);
+        gameTutorialCanvas.SetActive(true);
+
+        SceneManager.LoadScene("Game");
+        // Implement code to restart the game (e.g., reload the scene)
+    }
+    public void QuitGame()
+    {
+        // Quit the application
+        Application.Quit();
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
     public void ReduceHealth(int damage)
     {

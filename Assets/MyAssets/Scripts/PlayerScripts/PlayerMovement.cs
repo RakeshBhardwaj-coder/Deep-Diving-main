@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             PlayerAnimation.Instance.SwimmingAnimation();
+            TutorialManager.Instance.FirstMove();
 
         }
         else
