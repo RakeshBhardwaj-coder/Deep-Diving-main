@@ -65,19 +65,31 @@ public class ScoreManager : MonoBehaviour
     }
     public void CollectBtn()
     {
-        if (localGoldScore > 0 && isGoldUI)
+        if (localGoldScore == 0 && isGoldUI)
+        {
+            TutorialManager.Instance.ShowTutorial("First Collect the gold then come here!!!",25);
+        }
+        else if (localGoldScore > 0 && isGoldUI)
         {
             goldScore = localGoldScore;
             gamTextGloble[0].text = goldScore+"";
             localGoldScore = 0;
         }
-        if (localDiamondScore > 0 && isDiamondUI)
+        if (localDiamondScore == 0 && isDiamondUI)
+        {
+            TutorialManager.Instance.ShowTutorial("First Collect the diamond then come here!!!",25);
+        }
+        else if (localDiamondScore > 0 && isDiamondUI)
         {
             diamondScore = localDiamondScore;
             gamTextGloble[1].text = diamondScore + "";
             localDiamondScore = 0;
         }
-        if (localRubyScore > 0 && isRubyUI)
+        if (localRubyScore == 0 && isRubyUI)
+        {
+            TutorialManager.Instance.ShowTutorial("First Collect the ruby then come here!!!",25);
+        }
+        else if (localRubyScore > 0 && isRubyUI)
         {
             rubyScore = localRubyScore;
             gamTextGloble[2].text = rubyScore+ "";

@@ -24,26 +24,21 @@ public class GamCollector : MonoBehaviour
             switch (gamType)
             {
                 case GamType.Gold :
-                    Debug.Log("Gams" + gamType);
+                    Gam.Instance.CollectedFirstCoin(); //tutorial will show at first time when player get the coins
                     golds++;
                     ScoreManager.Instance.UpdateScore(0, golds);
                     SoundManager.Instance.CoinAudioPlay(0);
                     break;
                 case GamType.Diamond :
-                    Debug.Log("Gams" + gamType);
                     diamonds++;
                     ScoreManager.Instance.UpdateScore(1, diamonds);
                     SoundManager.Instance.CoinAudioPlay(1);
                     break;
                 case GamType.Ruby :
-                    Debug.Log("Gams" + gamType);
                     rubys++;
                     ScoreManager.Instance.UpdateScore(2, rubys);
                     SoundManager.Instance.CoinAudioPlay(2);
                     break;
-
-
-
             }
 
             

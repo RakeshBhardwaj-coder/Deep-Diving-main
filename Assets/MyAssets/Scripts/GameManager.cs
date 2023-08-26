@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     }
     public void PauseGame()
     {
-        Time.timeScale=0f;
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     }
     public void ReduceHealth(int damage)
     {

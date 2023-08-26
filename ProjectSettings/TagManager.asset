@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Gam
+  - CollectIt
   layers:
   - Default
   - TransparentFX
