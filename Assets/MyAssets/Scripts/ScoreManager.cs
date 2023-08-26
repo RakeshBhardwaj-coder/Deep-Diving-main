@@ -30,6 +30,12 @@ public class ScoreManager : MonoBehaviour
     public int localDiamondScore = 0;
     public int rubyScore = 0;
     public int localRubyScore = 0;
+    public bool isDiamondUI;
+    public bool isGoldUI;
+    public bool isRubyUI;
+
+
+    Gam gam;
     void Start()
     {
         gamText[0].text = "0";
@@ -59,19 +65,19 @@ public class ScoreManager : MonoBehaviour
     }
     public void CollectBtn()
     {
-        if (localGoldScore > 0)
+        if (localGoldScore > 0 && isGoldUI)
         {
             goldScore = localGoldScore;
             gamTextGloble[0].text = goldScore+"";
             localGoldScore = 0;
         }
-        if (localDiamondScore > 0)
+        if (localDiamondScore > 0 && isDiamondUI)
         {
             diamondScore = localDiamondScore;
             gamTextGloble[1].text = diamondScore + "";
             localDiamondScore = 0;
         }
-        if (localRubyScore > 0)
+        if (localRubyScore > 0 && isRubyUI)
         {
             rubyScore = localRubyScore;
             gamTextGloble[2].text = rubyScore+ "";

@@ -1,25 +1,39 @@
 using UnityEngine;
-
+public enum GamType
+{
+    Gold,
+    Diamond,
+    Ruby
+}
 public class Gam : MonoBehaviour
 {
+    //Singlton
+    private static Gam _instance;
 
-    public int index;
-    public int score;
-
-    private void Awake()
+    public static Gam Instance
     {
-
-    }
-    private void OnTriggerEnter2D(Collider2D otherCollider)
-    {
-
-        // Check if the collision happened with a specific tag.
-        if (otherCollider.CompareTag("Player"))
+        get
         {
-            score++;
-            ScoreManager.Instance.UpdateScore(index,score);
-            SoundManager.Instance.CoinAudioPlay(index);
-            Destroy(gameObject);
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<Gam>();
+            }
+
+            return _instance;
         }
+    }
+    public GamType Type { get; private set; }
+
+    public Gam(GamType gamType)
+    {
+        Type = gamType;
+    }
+
+    public GamType gamType;
+    private Gam gam;
+    private void Start()
+    {
+        gam= new Gam(gamType);
+
     }
 }
