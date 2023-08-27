@@ -39,6 +39,11 @@ public class GamCollector : MonoBehaviour
                     ScoreManager.Instance.UpdateScore(2, rubys);
                     SoundManager.Instance.CoinAudioPlay(2);
                     break;
+                case GamType.Heart :
+                    Debug.Log("Hearted");
+                    SoundManager.Instance.WinningSFX();
+                    HealthManager.Instance.IncreaseHealth();
+                    break;
             }
 
             

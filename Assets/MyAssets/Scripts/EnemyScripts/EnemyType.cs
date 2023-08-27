@@ -2,5 +2,6 @@ public enum EnemyType
 {
     Fish,
     DartFish,
-    BigFish
+    BigFish,
+    Corona
 }

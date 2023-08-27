@@ -3,7 +3,8 @@ public enum GamType
 {
     Gold,
     Diamond,
-    Ruby
+    Ruby,
+    Heart
 }
 
 public class Gam : MonoBehaviour

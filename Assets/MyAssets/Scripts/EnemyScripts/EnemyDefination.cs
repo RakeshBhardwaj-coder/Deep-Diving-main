@@ -33,6 +33,9 @@ public class EnemyDefination : MonoBehaviour
                 Power = 1;
                 Ability = "Area of Effect Attack";
                 break;
+            case EnemyType.Corona:
+                Power = 1;
+                break;
 
         }
     }
