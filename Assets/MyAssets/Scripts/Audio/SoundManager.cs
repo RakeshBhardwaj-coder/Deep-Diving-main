@@ -8,6 +8,10 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] hittingSFX;
     public AudioClip[] coinSFX;
     private AudioSource audioSource;
+    public AudioClip damage;
+    public AudioClip message;
+    public AudioClip winning;
+    public AudioClip[] buttonClicked;
     //Singlton
     private static SoundManager _instance;
 
@@ -29,7 +33,7 @@ public class SoundManager : MonoBehaviour
     }
     public void PlayExplosionAudio()
     {
-        audioSource.PlayOneShot(explosionSFX);
+        audioSource.PlayOneShot(damage);
     }
     public void PlayHitttingAudio()
     {
@@ -38,5 +42,21 @@ public class SoundManager : MonoBehaviour
     public void CoinAudioPlay(int index)
     {
         audioSource.PlayOneShot(coinSFX[index]);
+    }
+    public void MenuSeleceSFX()
+    {
+        audioSource.PlayOneShot(buttonClicked[0]);
+    }
+    public void MessageSFX()
+    {
+        audioSource.PlayOneShot(message);
+    }
+    public void ButtonClickedSFX()
+    {
+        audioSource.PlayOneShot(buttonClicked[1]);
+    }
+    public void WinningSFX()
+    {
+        audioSource.PlayOneShot(winning);
     }
 }

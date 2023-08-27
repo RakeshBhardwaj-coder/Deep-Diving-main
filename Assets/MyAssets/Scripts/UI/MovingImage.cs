@@ -6,12 +6,12 @@ public class MovingImage : MonoBehaviour
     float speed;
 
     private RectTransform imageRectTransform;
-    private float canvasWidth;
+    public float canvasWidth;
 
     private void Start()
     {
         imageRectTransform = uiImage.GetComponent<RectTransform>();
-        canvasWidth = uiImage.canvas.pixelRect.width;
+        canvasWidth = uiImage.canvas.pixelRect.width/1.5f;
     }
 
     private void Update()

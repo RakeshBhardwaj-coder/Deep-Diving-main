@@ -63,6 +63,7 @@ public class TutorialManager : MonoBehaviour
     {
         canTutorialShow = true;
         animator.SetBool(isTutorialShow, canTutorialShow);
+        SoundManager.Instance.MessageSFX();
         textTutorial.text = text;
         textTutorial.fontSize = fontSize;
 

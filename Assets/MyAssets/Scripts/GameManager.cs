@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         gameCanvas.SetActive(true);
         gameTutorialCanvas.SetActive(true);
+        Time.timeScale = 1f;
 
         SceneManager.LoadScene("Game");
         // Implement code to restart the game (e.g., reload the scene)
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
     }
     public void MainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
     public void ReduceHealth(int damage)
