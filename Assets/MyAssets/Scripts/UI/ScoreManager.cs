@@ -34,6 +34,7 @@ public class ScoreManager : MonoBehaviour
     public bool isGoldUI;
     public bool isRubyUI;
 
+    
     public GameObject[] gamsCollections;
 
     Gam gam;
@@ -42,6 +43,10 @@ public class ScoreManager : MonoBehaviour
         gamText[0].text = "0";
         gamText[1].text = "0";
         gamText[2].text = "0";
+
+        PlayerPrefs.GetInt("GoldPref", 0); // 0 is the default value if "Score" is not found
+        PlayerPrefs.GetInt("DiamondPref", 0); // 0 is the default value if "Score" is not found
+        PlayerPrefs.GetInt("RubyPref", 0); // 0 is the default value if "Score" is not found
     }
     private void Update()
     {
@@ -101,11 +106,18 @@ public class ScoreManager : MonoBehaviour
         }
         else if (localGoldScore > 0 && isGoldUI)
         {
-            goldScore = localGoldScore;
-            gamTextGloble[0].text = goldScore+"";
-            gamText[0].text = goldScore + "";
+            gamTextGloble[0].text = localGoldScore+"";
+            gamText[0].text = localGoldScore + "";
+            if (localGoldScore > goldScore)
+            {
+                goldScore = localGoldScore;
+                PlayerPrefs.SetInt("GoldPref", goldScore);
+                PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
+            }
+         
             localGoldScore = 0;
             SoundManager.Instance.CoinAudioPlay(3);
+
         }
         if (localDiamondScore == 0 && isDiamondUI)
         {
@@ -118,6 +130,8 @@ public class ScoreManager : MonoBehaviour
             diamondScore = localDiamondScore;
             gamTextGloble[1].text = diamondScore + "";
             gamText[1].text = diamondScore + "";
+            PlayerPrefs.SetInt("DiamondPref", diamondScore);
+            PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             localDiamondScore = 0;
             SoundManager.Instance.CoinAudioPlay(4);
 
@@ -132,6 +146,8 @@ public class ScoreManager : MonoBehaviour
             rubyScore = localRubyScore;
             gamTextGloble[2].text = rubyScore+ "";
             gamText[2].text = rubyScore + "";
+            PlayerPrefs.SetInt("RubyPref", rubyScore);
+            PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             localRubyScore = 0;
             SoundManager.Instance.CoinAudioPlay(5);
 
