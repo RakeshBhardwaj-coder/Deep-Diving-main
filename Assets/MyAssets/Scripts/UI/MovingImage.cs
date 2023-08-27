@@ -2,34 +2,42 @@ using UnityEngine;
 using UnityEngine.UI;
 public class MovingImage : MonoBehaviour
 {
-    public Image uiImage;
-    float speed;
+    public float leftBoundary = -8.0f; // Set the starting left position
+    public float rightBoundary = 8.0f; // Set the ending right position
 
-    private RectTransform imageRectTransform;
-    public float canvasWidth;
+    private Transform spriteTransform;
+    private Vector3 startingPosition;
+    private Vector3 targetPosition;
+    private float currentSpeed;
 
     private void Start()
     {
-        imageRectTransform = uiImage.GetComponent<RectTransform>();
-        canvasWidth = uiImage.canvas.pixelRect.width/1.5f;
+        spriteTransform = transform;
+        startingPosition = spriteTransform.position;
+        targetPosition = new Vector3(rightBoundary, startingPosition.y, startingPosition.z);
+        ResetSprite();
     }
 
     private void Update()
     {
-        MoveImage();
+        MoveSprite();
     }
 
-    private void MoveImage()
+    private void MoveSprite()
     {
-        speed = Random.Range(10f, 60f);
-        Vector3 newPosition = imageRectTransform.anchoredPosition;
-        newPosition.x += speed * Time.deltaTime;
+        float step = currentSpeed * Time.deltaTime;
+        spriteTransform.position = Vector3.MoveTowards(spriteTransform.position, targetPosition, step);
 
-        if (newPosition.x > canvasWidth)
+        // When the sprite reaches the right boundary, reset its position and speed
+        if (spriteTransform.position.x >= rightBoundary)
         {
-            newPosition.x = -canvasWidth; // Reset the position when image goes off screen
+            ResetSprite();
         }
+    }
 
-        imageRectTransform.anchoredPosition = newPosition;
+    private void ResetSprite()
+    {
+        currentSpeed = Random.Range(1f, 2f); // Set a random speed range
+        spriteTransform.position = startingPosition;
     }
 }
