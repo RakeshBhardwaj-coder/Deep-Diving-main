@@ -24,12 +24,9 @@ public class ScoreManager : MonoBehaviour
     public Transform gamSpawningPosition;
     public TextMeshProUGUI[] gamText;
     public TextMeshProUGUI[] gamTextGloble;
-    public int goldScore = 0;
-    public int localGoldScore = 0;
-    public int diamondScore = 0;
-    public int localDiamondScore = 0;
-    public int rubyScore = 0;
-    public int localRubyScore = 0;
+    int localGoldScore = 0;
+    int localDiamondScore = 0;
+    int localRubyScore = 0;
     public bool isDiamondUI;
     public bool isGoldUI;
     public bool isRubyUI;
@@ -108,10 +105,9 @@ public class ScoreManager : MonoBehaviour
         {
             gamTextGloble[0].text = localGoldScore+"";
             gamText[0].text = localGoldScore + "";
-            if (localGoldScore > goldScore)
+            if (localGoldScore > PlayerPrefs.GetInt("GoldPref") )
             {
-                goldScore = localGoldScore;
-                PlayerPrefs.SetInt("GoldPref", goldScore);
+                PlayerPrefs.SetInt("GoldPref", localGoldScore);
                 PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             }
          
@@ -127,11 +123,13 @@ public class ScoreManager : MonoBehaviour
         }
         else if (localDiamondScore > 0 && isDiamondUI)
         {
-            diamondScore = localDiamondScore;
-            gamTextGloble[1].text = diamondScore + "";
-            gamText[1].text = diamondScore + "";
-            PlayerPrefs.SetInt("DiamondPref", diamondScore);
-            PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
+            gamTextGloble[1].text = localDiamondScore + "";
+            gamText[1].text = localDiamondScore + "";
+            if (localDiamondScore > PlayerPrefs.GetInt("DiamondPref"))
+            {
+                PlayerPrefs.SetInt("DiamondPref", localDiamondScore);
+                PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
+            }
             localDiamondScore = 0;
             SoundManager.Instance.CoinAudioPlay(4);
 
@@ -143,11 +141,13 @@ public class ScoreManager : MonoBehaviour
         }
         else if (localRubyScore > 0 && isRubyUI)
         {
-            rubyScore = localRubyScore;
-            gamTextGloble[2].text = rubyScore+ "";
-            gamText[2].text = rubyScore + "";
-            PlayerPrefs.SetInt("RubyPref", rubyScore);
-            PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
+            gamTextGloble[2].text = localRubyScore+ "";
+            gamText[2].text = localRubyScore + "";
+            if (localRubyScore > PlayerPrefs.GetInt("DiamondPref"))
+            {
+                PlayerPrefs.SetInt("RubyPref", localRubyScore);
+                PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
+            }
             localRubyScore = 0;
             SoundManager.Instance.CoinAudioPlay(5);
 
@@ -162,6 +162,14 @@ public class ScoreManager : MonoBehaviour
             case 0:
                 animator = gamsCollections[position].GetComponent<Animator>();
                 animator.SetBool("isFakeGold", haveGams);
+                break;
+            case 1:
+                animator = gamsCollections[position].GetComponent<Animator>();
+                animator.SetBool("isFakeDiamond", haveGams);
+                break;
+            case 2:
+                animator = gamsCollections[position].GetComponent<Animator>();
+                animator.SetBool("isFakeRuby", haveGams);
                 break;
         }
        
