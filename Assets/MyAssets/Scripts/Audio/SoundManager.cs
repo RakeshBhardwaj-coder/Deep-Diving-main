@@ -55,8 +55,9 @@ public class SoundManager : MonoBehaviour
     {
         audioSource.PlayOneShot(buttonClicked[1]);
     }
-    public void WinningSFX()
+    public void WinnerSFX()
     {
         audioSource.PlayOneShot(winning);
     }
+  
 }

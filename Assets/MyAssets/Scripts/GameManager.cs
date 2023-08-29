@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private bool isGameOver = false;
     public Animator pauseGameAnim;
     public bool isWinnedGame=false;
+    
     //Singlton
     private static GameManager _instance;
 

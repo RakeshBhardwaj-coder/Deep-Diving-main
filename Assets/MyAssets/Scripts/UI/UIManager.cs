@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -9,6 +10,9 @@ public class UIManager : MonoBehaviour
     public Slider volumeSlider;
     public Slider loadingSlider;
     public GameObject loadingPanel;
+    public AudioClip buttonClicked;
+    public AudioSource audioSource;
+
     private void Start()
     {
         // Initialize volume slider
@@ -63,5 +67,9 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("DiamondPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.SetInt("RubyPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.Save();
+    }
+    public void ClickSound()
+    {
+        audioSource.PlayOneShot(buttonClicked);
     }
 }

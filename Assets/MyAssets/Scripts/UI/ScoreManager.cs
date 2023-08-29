@@ -85,15 +85,22 @@ public class ScoreManager : MonoBehaviour
 
         if (goldPref >= 60 && diamondPref >= 30 && rubyPref >= 20)
         {
+
             Debug.Log("Congratulations! You've won the game!");
             GameManager.Instance.isWinnedGame = true;
-            // Additional winning logic or UI display can be added here
+            GameManager.Instance.gameCanvas.SetActive(false);
+            PlayerMovement.Instance.canMove = false;
+
+
         }
         else
         {
+
             Debug.Log("Keep playing to achieve victory!");
             GameManager.Instance.isWinnedGame = false;
-            // Additional feedback or UI updates can be added here
+            PlayerMovement.Instance.canMove = true;
+
+
         }
 
     }

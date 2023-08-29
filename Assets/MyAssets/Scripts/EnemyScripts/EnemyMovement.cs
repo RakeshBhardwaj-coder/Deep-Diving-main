@@ -6,15 +6,40 @@ public class EnemyMovement : MonoBehaviour
     public float movementRadius = 5f;
     public float moveSpeed = 2f;
 
+    public bool canMove;
     private Vector2 initialPosition;
+    //Singlton
+    private static EnemyMovement _instance;
 
+    public static EnemyMovement Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<EnemyMovement>();
+            }
+
+            return _instance;
+        }
+    }
     private void Start()
     {
         initialPosition = transform.position;
+        canMove = true;
     }
 
     private void Update()
     {
+        if (canMove)
+        {
+            EnemyMove();
+        }
+    }
+   
+    void EnemyMove()
+    {
+
         // Calculate the target position within the movement area
         Vector2 targetPosition2D = initialPosition + Random.insideUnitCircle * movementRadius;
 

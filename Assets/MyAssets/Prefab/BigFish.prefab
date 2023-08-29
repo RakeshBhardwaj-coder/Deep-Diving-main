@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -7623752279610658406}
   - component: {fileID: 6411228671602948351}
   - component: {fileID: 6495493029520678756}
+  - component: {fileID: 7231153870035430177}
   m_Layer: 0
   m_Name: BigFish
   m_TagString: Untagged
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -597063755
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 645416927, guid: 2ba396bc025f32746b98b20cbdab5491, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -170,6 +171,7 @@ MonoBehaviour:
   centerPoint: {fileID: 7084672705860470968}
   movementRadius: 5
   moveSpeed: 0.6
+  canMove: 1
 --- !u!50 &6495493029520678756
 Rigidbody2D:
   serializedVersion: 4
@@ -191,3 +193,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7231153870035430177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084672705860470975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca16134e084924b4d820283d9a44e575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

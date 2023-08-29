@@ -41,7 +41,7 @@ public class GamCollector : MonoBehaviour
                     break;
                 case GamType.Heart :
                     Debug.Log("Hearted");
-                    SoundManager.Instance.WinningSFX();
+                    SoundManager.Instance.CoinAudioPlay(2);
                     HealthManager.Instance.IncreaseHealth();
                     break;
             }
