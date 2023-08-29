@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isBoosted = false;
     private bool facingLeft = false;
 
+    public bool canMove = true;
+
     private Rigidbody2D rb;
 
     private void Start()
@@ -29,6 +31,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (canMove)
+        {
+            Movement();
+        }
+
+    }
+    void Movement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -48,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerAnimation.Instance.DivingAnimation(isBoosted);
         }
-        else if (!isBoosted && movement.magnitude > 0.1f )
+        else if (!isBoosted && movement.magnitude > 0.1f)
         {
 
             PlayerAnimation.Instance.SwimmingAnimation();
@@ -140,7 +150,6 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
-
 
 
     }

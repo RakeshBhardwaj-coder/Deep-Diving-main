@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     public int playerMaxHeart=4;
     public bool isAttack = true;
 
-
     public void GameOver()
     {
         isGameOver = true;
@@ -47,7 +46,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseGameAnim.SetBool("isPaused", false);
-
     }
 
     public void RestartGame()
@@ -79,8 +77,6 @@ public class GameManager : MonoBehaviour
         HealthManager.Instance.ReduceHealth(damage);
         SoundManager.Instance.PlayHitttingAudio(); //sound
         isAttack = false;
-       
-
     }
 
 }
