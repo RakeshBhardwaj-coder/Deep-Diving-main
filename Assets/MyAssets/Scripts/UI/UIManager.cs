@@ -66,9 +66,18 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("GoldPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.SetInt("DiamondPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.SetInt("RubyPref", 0); // 0 is the default value if "Score" is not found
+
+        if (PlayerPrefs.HasKey("HasCollectedFirstCoin"))
+        {
+            PlayerPrefs.SetInt("HasCollectedFirstCoin", 0);
+        }   
+        if (PlayerPrefs.HasKey("HasFirstMove"))
+        {
+            PlayerPrefs.SetInt("HasFirstMove", 0);
+        }
         PlayerPrefs.Save();
     }
-    public void ClickSound()
+        public void ClickSound()
     {
         audioSource.PlayOneShot(buttonClicked);
     }

@@ -43,7 +43,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetBool(DIVING, false);
         animator.SetBool(SWIMMING, false);
-        animator.SetBool(HURT, false);
+      /*  animator.SetBool(HURT, false);*/
     }
     public void DivingAnimation(bool isDiving)
     {

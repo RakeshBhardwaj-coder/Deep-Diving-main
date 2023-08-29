@@ -1,30 +1,55 @@
 using UnityEngine;
 using System.Collections;
+
 public class EnemyAttack : MonoBehaviour
 {
     public float attackRange = 5f;
     public float attackCooldown = 2f;
-    public float enemyAttackSpeed=1f;
+    public float enemyAttackSpeed = 1f;
+
     private Transform player;
-    private bool canAttack = true;
+    private Vector3 originalPosition;
+    private bool isReturning = false;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        originalPosition = transform.position;
     }
 
     private void Update()
     {
         if (player != null)
         {
-
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            if (distanceToPlayer <= attackRange && GameManager.Instance.isAttack)
+            if (isReturning)
             {
-                Attack();
+                // Return to original position
+                Vector3 directionToOriginal = originalPosition - transform.position;
+                transform.Translate(directionToOriginal.normalized * enemyAttackSpeed * Time.deltaTime);
 
-                /* StartCoroutine(AttackCooldown());*/
+                // Check if we've reached the original position
+                if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
+                {
+                    isReturning = false;
+                }
+            }
+            else if (distanceToPlayer <= attackRange && GameManager.Instance.isAttack)
+            {
+                // Check for wall collisions before attacking
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, player.position - transform.position, out hit, attackRange))
+                {
+                    if (hit.collider.CompareTag("Wall"))
+                    {
+                        // Handle enemy behavior when colliding with a wall
+                        isReturning = true;
+                        return; // Don't proceed with attacking
+                    }
+                }
+
+                Attack();
             }
             else if (!GameManager.Instance.isAttack && distanceToPlayer <= attackRange)
             {
@@ -32,6 +57,15 @@ public class EnemyAttack : MonoBehaviour
             }
         }
     }
+
+    // ... (rest of the code)
+
+    private IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+        GameManager.Instance.isAttack = true;
+    }
+
 
     private void Attack()
     {
@@ -49,9 +83,7 @@ public class EnemyAttack : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    private IEnumerator AttackCooldown()
-    {
-        yield return new WaitForSeconds(attackCooldown);
-        GameManager.Instance.isAttack = true;
-    }
+  
+
 }
+

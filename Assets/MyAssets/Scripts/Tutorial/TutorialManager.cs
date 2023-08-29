@@ -28,7 +28,7 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
 
-        /* hasFirstMove = PlayerPrefs.GetInt("HasFirstMove", 0) == 1;*/
+        hasFirstMove = PlayerPrefs.GetInt("HasFirstMove", 0) == 1;
 
         // Check if the player has seen the tutorial before
 
@@ -52,10 +52,10 @@ public class TutorialManager : MonoBehaviour
         {
             hasFirstMove = true;
             ShowTutorial("Move - WASD/Arrow keys,\n\nDiving - Shift + WASD / Arrow kesy", 25);
-           /* // Save the status of first coin collection
-            PlayerPrefs.SetInt("HasCollectedFirstCoin", 1);*/
-/*
-            PlayerPrefs.Save();*/
+            // Save the status of first coin collection
+            PlayerPrefs.SetInt("HasFirstMove", 1); // only show at first time only
+
+            PlayerPrefs.Save();
 
         }
     }

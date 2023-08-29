@@ -34,7 +34,10 @@ public class ScoreManager : MonoBehaviour
     public int goldPref;
     public int diamondPref;
     public int rubyPref;
-    
+
+
+    private Transform player;
+
     public GameObject[] gamsCollections;
 
     Gam gam;
@@ -47,6 +50,8 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.GetInt("GoldPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.GetInt("DiamondPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.GetInt("RubyPref", 0); // 0 is the default value if "Score" is not found
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     private void Update()
     {
@@ -89,8 +94,11 @@ public class ScoreManager : MonoBehaviour
             Debug.Log("Congratulations! You've won the game!");
             GameManager.Instance.isWinnedGame = true;
             GameManager.Instance.gameCanvas.SetActive(false);
-            PlayerMovement.Instance.canMove = false;
 
+            if (player != null)
+            {
+                PlayerMovement.Instance.canMove = false;
+            }
 
         }
         else
@@ -98,8 +106,10 @@ public class ScoreManager : MonoBehaviour
 
             Debug.Log("Keep playing to achieve victory!");
             GameManager.Instance.isWinnedGame = false;
-            PlayerMovement.Instance.canMove = true;
-
+            if (player != null)
+            {
+                PlayerMovement.Instance.canMove = true;
+            }
 
         }
 
