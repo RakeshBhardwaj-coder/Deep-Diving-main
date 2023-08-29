@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameTutorialCanvas;
     private bool isGameOver = false;
     public Animator pauseGameAnim;
+    public bool isWinnedGame;
     //Singlton
     private static GameManager _instance;
 
@@ -60,6 +61,11 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene("Game");
         // Implement code to restart the game (e.g., reload the scene)
+    }
+    public void ResetTheGame()
+    {
+        isWinnedGame = false;
+        ScoreManager.Instance.ResetScore();
     }
     public void QuitGame()
     {

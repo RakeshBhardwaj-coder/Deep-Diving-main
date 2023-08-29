@@ -28,6 +28,7 @@ public class HealthManager : MonoBehaviour
     public int currentHearts;
     private int maxHearts;
 
+   
     private void Start()
     {
         maxHearts = GameManager.Instance.playerMaxHeart;
@@ -38,12 +39,12 @@ public class HealthManager : MonoBehaviour
     void Update()
     {
       
-        if (currentHearts == 0)
+     /*   if (currentHearts == 0)
         {
             GameManager.Instance.GameOver();
-           /* vFXManager.SpawnVFX();*/
+           *//* vFXManager.SpawnVFX();*//*
 
-        }
+        }*/
 
     }
     private void InitializeHearts()

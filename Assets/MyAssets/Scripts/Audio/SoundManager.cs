@@ -33,7 +33,7 @@ public class SoundManager : MonoBehaviour
     }
     public void PlayExplosionAudio()
     {
-        audioSource.PlayOneShot(damage);
+        audioSource.PlayOneShot(explosionSFX);
     }
     public void PlayHitttingAudio()
     {

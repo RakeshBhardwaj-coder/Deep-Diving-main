@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerDestruction : MonoBehaviour
 {
     public GameObject destructionVFX;
-    private bool isPlayerDestoryed = false;
+    public bool isPlayerDestoryed = false;
 
     private void DestroyPlayer()
     {
@@ -22,6 +22,8 @@ public class PlayerDestruction : MonoBehaviour
            
         }
     }
+ 
+
 
 
 }
