@@ -24,8 +24,8 @@ public class CheckEnemy : MonoBehaviour
             // Call a method to re-enable the collider after a delay
             GameManager.Instance.ReduceHealth(1);
             isFlickering = true;
-            StartCoroutine(FlickerRoutine(2f));
-            Invoke("EnableCollider", 2f);
+            StartCoroutine(FlickerRoutine(.5f));
+            Invoke("EnableCollider", .3f);
         }
     }
     private void EnableCollider()

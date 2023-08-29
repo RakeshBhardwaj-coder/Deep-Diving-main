@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 303874538843906987}
   - component: {fileID: 567898709}
   - component: {fileID: 567898714}
+  - component: {fileID: 1901193344}
+  - component: {fileID: 423791657}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -153,3 +155,35 @@ MonoBehaviour:
   attackRange: 2.2
   attackCooldown: 2
   enemyAttackSpeed: 1
+--- !u!114 &1901193344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303874538843906976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9982f9ba8040947b41937d230b8991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerPoint: {fileID: 303874538843906980}
+  movementRadius: 2
+  moveSpeed: 2
+  canMove: 1
+--- !u!114 &423791657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303874538843906976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9982f9ba8040947b41937d230b8991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerPoint: {fileID: 303874538843906980}
+  movementRadius: 2
+  moveSpeed: 2
+  canMove: 1
