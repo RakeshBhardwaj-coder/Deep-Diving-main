@@ -57,4 +57,11 @@ public class UIManager : MonoBehaviour
         // Quit the application
         Application.Quit();
     }
+    public void ResetTheGame()
+    {
+        PlayerPrefs.SetInt("GoldPref", 0); // 0 is the default value if "Score" is not found
+        PlayerPrefs.SetInt("DiamondPref", 0); // 0 is the default value if "Score" is not found
+        PlayerPrefs.SetInt("RubyPref", 0); // 0 is the default value if "Score" is not found
+        PlayerPrefs.Save();
+    }
 }

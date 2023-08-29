@@ -31,6 +31,9 @@ public class ScoreManager : MonoBehaviour
     public bool isGoldUI;
     public bool isRubyUI;
 
+    public int goldPref;
+    public int diamondPref;
+    public int rubyPref;
     
     public GameObject[] gamsCollections;
 
@@ -73,6 +76,24 @@ public class ScoreManager : MonoBehaviour
         {
             PlayFakeGamAnimation(2, false);
 
+        }
+
+        goldPref = PlayerPrefs.GetInt("GoldPref", 0);
+        diamondPref = PlayerPrefs.GetInt("DiamondPref", 0);
+        rubyPref = PlayerPrefs.GetInt("RubyPref", 0);
+
+
+        if (goldPref >= 60 && diamondPref >= 30 && rubyPref >= 20)
+        {
+            Debug.Log("Congratulations! You've won the game!");
+            GameManager.Instance.isWinnedGame = true;
+            // Additional winning logic or UI display can be added here
+        }
+        else
+        {
+            Debug.Log("Keep playing to achieve victory!");
+            GameManager.Instance.isWinnedGame = false;
+            // Additional feedback or UI updates can be added here
         }
 
     }
@@ -176,9 +197,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void ResetScore()
     {
-        PlayerPrefs.SetInt("GoldPref", 0); // 0 is the default value if "Score" is not found
-        PlayerPrefs.SetInt("DiamondPref", 0); // 0 is the default value if "Score" is not found
-        PlayerPrefs.SetInt("RubyPref", 0); // 0 is the default value if "Score" is not found
+       
     }
 
 }
