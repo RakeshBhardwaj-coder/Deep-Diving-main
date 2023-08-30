@@ -22,27 +22,65 @@ public class PlayerMovement : MonoBehaviour
     private bool facingLeft = false;
     public bool canMove=true;
     private Rigidbody2D rb;
+    float horizontalInput;
+    float verticalInput;
+
+    //mobile inputs
+    private Vector2 touchStartPosition;
+    bool isMoving;
+
+    private void Update()
+    {
+        // Check if the current platform is mobile
+#if UNITY_ANDROID || UNITY_IOS
+        HandleMobileInput();
+
+#else
+        if (canMove)
+        {
+            Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        }
+#endif
+    }
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    void HandleMobileInput()
     {
-
-
-        if (canMove)
+        // Mobile input handling using touch controls
+        if (Input.touchCount > 0)
         {
-            Movement();
-        }
+            Touch touch = Input.GetTouch(0);
 
+            if (touch.phase == TouchPhase.Began)
+            {
+                touchStartPosition = touch.position;
+                isMoving = true;
+            }
+            else if (touch.phase == TouchPhase.Moved)
+            {
+                Vector2 touchDelta = touch.position - touchStartPosition;
+                float horizontalInput = Mathf.Clamp(touchDelta.x / Screen.width, -1f, 1f);
+                float verticalInput = Mathf.Clamp(touchDelta.y / Screen.height, -1f, 1f);
+
+
+                Movement(horizontalInput, verticalInput);
+            }
+            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+            {
+                isMoving = false;
+            }
+        }
     }
 
-    void Movement()
+    void Movement(float horizontalInput, float verticalInput)
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+       
+      
 
         Vector2 movement = new Vector2(horizontalInput, verticalInput);
         movement = movement.normalized;

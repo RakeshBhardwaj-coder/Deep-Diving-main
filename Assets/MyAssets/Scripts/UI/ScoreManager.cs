@@ -91,7 +91,7 @@ public class ScoreManager : MonoBehaviour
         if (goldPref >= 60 && diamondPref >= 30 && rubyPref >= 20)
         {
 
-            Debug.Log("Congratulations! You've won the game!");
+           /* Debug.Log("Congratulations! You've won the game!");*/
             GameManager.Instance.isWinnedGame = true;
             GameManager.Instance.gameCanvas.SetActive(false);
 
@@ -104,7 +104,7 @@ public class ScoreManager : MonoBehaviour
         else
         {
 
-            Debug.Log("Keep playing to achieve victory!");
+           /* Debug.Log("Keep playing to achieve victory!");*/
             GameManager.Instance.isWinnedGame = false;
             if (player != null)
             {
