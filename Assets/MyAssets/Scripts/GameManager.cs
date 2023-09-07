@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public float normalMoveSpeed; // Adjust this value to control movement speed
+    public float boostedMoveSpeed; // Speed when Shift is held
+    public bool isBoosted = false;
     public GameObject gameOverPanel;
     public GameObject gameCanvas;
     public GameObject gameTutorialCanvas;
     private bool isGameOver = false;
     public Animator pauseGameAnim;
     public bool isWinnedGame=false;
+
     
     //Singlton
     private static GameManager _instance;
@@ -82,6 +84,11 @@ public class GameManager : MonoBehaviour
         isAttack = false;
        
 
+    }
+
+    public void Boost(bool boost)
+    {
+        isBoosted = boost;
     }
 
 }

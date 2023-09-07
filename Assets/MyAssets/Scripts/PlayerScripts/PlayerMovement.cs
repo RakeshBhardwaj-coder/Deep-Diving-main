@@ -16,9 +16,9 @@ public class PlayerMovement : MonoBehaviour
             return _instance;
         }
     }
-    public float normalMoveSpeed; // Adjust this value to control movement speed
-    public float boostedMoveSpeed; // Speed when Shift is held
-    public bool isBoosted = false;
+    float normalMoveSpeed; // Adjust this value to control movement speed
+    float boostedMoveSpeed; // Speed when Shift is held
+    bool isBoosted = false;
     private bool facingLeft = false;
     public bool canMove=true;
     private Rigidbody2D rb;
@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+       
         // Check if the current platform is mobile
 #if UNITY_ANDROID || UNITY_IOS
         HandleMobileInput();
@@ -52,10 +53,15 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+       
+        normalMoveSpeed = GameManager.Instance.normalMoveSpeed;
+        boostedMoveSpeed = GameManager.Instance.boostedMoveSpeed;
+
     }
 
     void HandleMobileInput()
     {
+        isBoosted = GameManager.Instance.isBoosted; //is boosted can be get by the bool value in inspector
         Movement(joystick.Horizontal, joystick.Vertical, isBoosted);
 
        
@@ -175,8 +181,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Boost(bool boost)
-    {
-        isBoosted = boost;
-    } 
+   
 }
