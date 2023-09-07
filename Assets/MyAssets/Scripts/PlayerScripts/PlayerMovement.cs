@@ -28,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     //mobile inputs
     private Vector2 touchStartPosition;
     bool isMoving;
+    private float lastTapTime;
+    public float doubleTapTimeThreshold = 0.3f;
+    public Joystick joystick;
 
     private void Update()
     {
@@ -38,7 +41,9 @@ public class PlayerMovement : MonoBehaviour
 #else
         if (canMove)
         {
-            Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            // Check if Shift key is held down
+            isBoosted = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), isBoosted);
         }
 #endif
     }
@@ -51,33 +56,13 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleMobileInput()
     {
-        // Mobile input handling using touch controls
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
+        Movement(joystick.Horizontal, joystick.Vertical, isBoosted);
 
-            if (touch.phase == TouchPhase.Began)
-            {
-                touchStartPosition = touch.position;
-                isMoving = true;
-            }
-            else if (touch.phase == TouchPhase.Moved)
-            {
-                Vector2 touchDelta = touch.position - touchStartPosition;
-                float horizontalInput = Mathf.Clamp(touchDelta.x / Screen.width, -1f, 1f);
-                float verticalInput = Mathf.Clamp(touchDelta.y / Screen.height, -1f, 1f);
-
-
-                Movement(horizontalInput, verticalInput);
-            }
-            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-            {
-                isMoving = false;
-            }
-        }
+       
     }
 
-    void Movement(float horizontalInput, float verticalInput)
+
+    void Movement(float horizontalInput, float verticalInput,bool isBoosted)
     {
        
       
@@ -85,8 +70,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 movement = new Vector2(horizontalInput, verticalInput);
         movement = movement.normalized;
 
-        // Check if Shift key is held down
-        isBoosted = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+       
 
         // Choose the appropriate move speed based on the Shift key
         float currentMoveSpeed = isBoosted ? boostedMoveSpeed : normalMoveSpeed;
@@ -190,4 +174,9 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+
+    public void Boost(bool boost)
+    {
+        isBoosted = boost;
+    } 
 }
