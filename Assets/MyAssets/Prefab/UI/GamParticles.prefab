@@ -49,7 +49,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -1298,7 +1298,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -1306,17 +1306,17 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.3578972, g: 0.9811321, b: 0.7211486, a: 1}
-        key1: {r: 0.4158063, g: 0.9056604, b: 0.5720403, a: 1}
-        key2: {r: 0.45425415, g: 0.8207547, b: 0.45528933, a: 0}
-        key3: {r: 0.24985147, g: 1, b: 0, a: 0}
+        key0: {r: 0.972549, g: 0.8880438, b: 0.19999999, a: 1}
+        key1: {r: 0.9339623, g: 0.74073935, b: 0.19971511, a: 1}
+        key2: {r: 0.9245283, g: 0.6506477, b: 0.14536603, a: 0}
+        key3: {r: 0.8113208, g: 0.52395207, b: 0.08164228, a: 0}
         key4: {r: 0.24985147, g: 1, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 15998
-        ctime1: 31997
-        ctime2: 47802
+        ctime0: 16384
+        ctime1: 33346
+        ctime2: 49922
         ctime3: 65535
         ctime4: 65535
         ctime5: 0
@@ -3547,7 +3547,7 @@ ParticleSystem:
     separateAxes: 0
     range: {x: 0, y: 1}
   ColorBySpeedModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -3555,17 +3555,17 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.972549, g: 0.8880438, b: 0.19999999, a: 1}
-        key1: {r: 0.9339623, g: 0.74073935, b: 0.19971511, a: 1}
-        key2: {r: 0.9245283, g: 0.6506477, b: 0.14536603, a: 0}
-        key3: {r: 0.8113208, g: 0.52395207, b: 0.08164228, a: 0}
+        key0: {r: 0.19999999, g: 0.972549, b: 0.9218345, a: 1}
+        key1: {r: 0.19999996, g: 0.86268634, b: 0.93333334, a: 1}
+        key2: {r: 0.14509803, g: 0.7076052, b: 0.9254902, a: 0}
+        key3: {r: 0.08235292, g: 0.65224516, b: 0.8117647, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 16384
-        ctime1: 33346
-        ctime2: 49922
+        ctime1: 32960
+        ctime2: 50501
         ctime3: 65535
         ctime4: 0
         ctime5: 0
@@ -3611,7 +3611,7 @@ ParticleSystem:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-    range: {x: 0, y: 5}
+    range: {x: 0, y: 1}
   CollisionModule:
     enabled: 0
     serializedVersion: 4

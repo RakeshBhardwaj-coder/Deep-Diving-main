@@ -11,6 +11,8 @@ public class GamCollector : MonoBehaviour
 
     public DestroyParticles destroyParticles;
     public ParticleSystem gamParticles;
+    public Gradient[] gamColorParticles;
+    int iColor;
 
     private void Awake()
     {
@@ -31,25 +33,36 @@ public class GamCollector : MonoBehaviour
                     golds++;
                     ScoreManager.Instance.UpdateScore(0, golds);
                     SoundManager.Instance.CoinAudioPlay(0);
-                    
+                    iColor = 0;
                     break;
                 case GamType.Diamond :
                     diamonds++;
                     ScoreManager.Instance.UpdateScore(1, diamonds);
                     SoundManager.Instance.CoinAudioPlay(1);
+                    iColor = 1;
                     break;
                 case GamType.Ruby :
                     rubys++;
                     ScoreManager.Instance.UpdateScore(2, rubys);
                     SoundManager.Instance.CoinAudioPlay(2);
+                    iColor = 2;
                     break;
                 case GamType.Heart :
                     Debug.Log("Hearted");
                     SoundManager.Instance.CoinAudioPlay(2);
                     HealthManager.Instance.IncreaseHealth();
+                    iColor = 3;
                     break;
             }
-            ParticleSystem instantiatedObject = Instantiate(gamParticles,transform.position, Quaternion.identity);
+
+           
+
+        
+            ParticleSystem instantiatedObject = Instantiate(gamParticles,new Vector3(transform.position.x, transform.position.y, transform.position.z - 1f), Quaternion.identity);
+            // Access the Particle System's ColorOverLifetime module directly.
+            var colorOverLifetime = instantiatedObject.colorOverLifetime;
+            // Set the color curve to the provided gradient.
+            colorOverLifetime.color = gamColorParticles[iColor];
             instantiatedObject.Play();
             float particleSystemDuration = gamParticles.main.duration + gamParticles.main.startLifetime.constantMax;
             destroyParticles.DestoryTheParticles(instantiatedObject.gameObject, particleSystemDuration);
