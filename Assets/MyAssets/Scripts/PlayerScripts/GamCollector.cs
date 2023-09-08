@@ -5,10 +5,12 @@ using UnityEngine;
 public class GamCollector : MonoBehaviour
 {
     Gam gam;
-    ParticleSystem gamParticles;
     public int golds;
     public int diamonds;
     public int rubys;
+
+    public DestroyParticles destroyParticles;
+    public ParticleSystem gamParticles;
 
     private void Awake()
     {
@@ -20,27 +22,16 @@ public class GamCollector : MonoBehaviour
         if (collision.gameObject.CompareTag("Gam"))
         {
             gam = collision.gameObject.GetComponent<Gam>();
-            gamParticles = Gam.Instance.gamParticles;
             GamType gamType = gam.gamType;
 
             switch (gamType)
             {
                 case GamType.Gold :
                     Gam.Instance.CollectedFirstCoin(); //tutorial will show at first time when player get the coins
-
                     golds++;
                     ScoreManager.Instance.UpdateScore(0, golds);
                     SoundManager.Instance.CoinAudioPlay(0);
-                    if (gamParticles != null)
-                    {
-                        // Instantiate the Particle System prefab.
-                        ParticleSystem newParticleSystem = Instantiate(gamParticles, transform.position, Quaternion.identity);
-
-                      
-                        // Play the Particle System (if it's not set to Auto Play).
-                        newParticleSystem.Play();
-                        
-                    }
+                    
                     break;
                 case GamType.Diamond :
                     diamonds++;
@@ -58,9 +49,11 @@ public class GamCollector : MonoBehaviour
                     HealthManager.Instance.IncreaseHealth();
                     break;
             }
-
-          
-           Destroy(collision.gameObject);
+            ParticleSystem instantiatedObject = Instantiate(gamParticles,transform.position, Quaternion.identity);
+            instantiatedObject.Play();
+            float particleSystemDuration = gamParticles.main.duration + gamParticles.main.startLifetime.constantMax;
+            destroyParticles.DestoryTheParticles(instantiatedObject.gameObject, particleSystemDuration);
+            Destroy(collision.gameObject);
         }
     }
 }

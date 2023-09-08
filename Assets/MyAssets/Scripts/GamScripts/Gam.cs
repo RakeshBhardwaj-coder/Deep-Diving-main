@@ -35,20 +35,15 @@ public class Gam : MonoBehaviour
     public GamType gamType;
     private Gam gam;
     private bool hasCollectedFirstCoin = false;
-    public ParticleSystem gamParticles;
-
+    public Transform particlesPosition;
+    public Transform emptyGameObject;
     private void Start()
     {
         gam = new Gam(gamType);
 
         // Load the saved status of first coin collection
         hasCollectedFirstCoin = PlayerPrefs.GetInt("HasCollectedFirstCoin", 0) == 1;
-
-        // Show message if the player hasn't collected the first coin yet
-        if (!hasCollectedFirstCoin)
-        {
-        }
-       
+        particlesPosition = GetComponent<Transform>();
     }
     public void CollectedFirstCoin()
     {
