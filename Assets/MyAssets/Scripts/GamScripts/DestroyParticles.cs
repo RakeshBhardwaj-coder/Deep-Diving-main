@@ -6,7 +6,7 @@ public class DestroyParticles : MonoBehaviour
 {
      public void DestoryTheParticles(GameObject particle, float duration)
         {
-            Destroy(particle, duration);
+           /* Destroy(particle, duration);*/
         }
     }
   
