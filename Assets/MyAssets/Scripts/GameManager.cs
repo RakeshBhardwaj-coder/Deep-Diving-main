@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public Animator pauseGameAnim;
     public bool isWinnedGame=false;
 
-    
+
     //Singlton
     private static GameManager _instance;
 

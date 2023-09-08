@@ -8182,17 +8182,17 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9cd9d3b3f5ef04b4cb500f4720bc3cd5, type: 3}
-    m_FontSize: 27
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 42
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 1.2
   m_Text: 'WASD/Arrow keys - Move
 
     Shift + WASD / Arrow kesy - Diving'
@@ -8478,8 +8478,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.0024414062, y: -92}
-  m_SizeDelta: {x: 0.005, y: 101.7269}
+  m_AnchoredPosition: {x: -5, y: -92}
+  m_SizeDelta: {x: -109.99999, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &580124339
 MonoBehaviour:
@@ -36847,15 +36847,15 @@ RectTransform:
   m_GameObject: {fileID: 1239015166}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 580124338}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -22.263184, y: -7.0820007}
+  m_AnchoredPosition: {x: -26, y: -7.0820007}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239015168
@@ -39076,7 +39076,7 @@ GameObject:
   - component: {fileID: 1405741428}
   - component: {fileID: 1405741429}
   m_Layer: 0
-  m_Name: Slider
+  m_Name: BoostSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46401,8 +46401,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStamina: 100
   currentStamina: 100
+  waitForStamina: 5
   staminaRegenRate: 10
-  staminaDepletionAmount: 50
+  staminaDepletionAmount: 20
   staminaBar: {fileID: 603394294}
 --- !u!1 &1915207681
 GameObject:
