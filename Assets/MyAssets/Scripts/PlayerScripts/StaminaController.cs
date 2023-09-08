@@ -26,11 +26,7 @@ public class StaminaController : MonoBehaviour
         {
             DepleteStamina();
         }
-        else if(isWait)
-        {
-            StartCoroutine(WaitToRegenerateStamina());
-        }
-        else
+      else
         {
             RegenerateStamina();
         }
@@ -70,17 +66,5 @@ public class StaminaController : MonoBehaviour
         staminaBar.fillAmount = fillAmount;
     }
 
-    IEnumerator WaitToRegenerateStamina()
-    {
-        while (isWait)
-        {
-            Debug.Log("a");
-            yield return new WaitForSeconds(5f);
-            isWait = false;
-        }
-       
-
-
-       
-    }
+  
 }

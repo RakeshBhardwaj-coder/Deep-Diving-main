@@ -7,6 +7,7 @@ public enum GamType
     Heart
 }
 
+
 public class Gam : MonoBehaviour
 {
     //Singlton
@@ -34,6 +35,7 @@ public class Gam : MonoBehaviour
     public GamType gamType;
     private Gam gam;
     private bool hasCollectedFirstCoin = false;
+    public ParticleSystem gamParticles;
 
     private void Start()
     {
@@ -62,4 +64,5 @@ public class Gam : MonoBehaviour
 
         }
     }
+   
 }

@@ -212,6 +212,7 @@ public class ScoreManager : MonoBehaviour
         }
        
     }
+    
     public void ResetScore()
     {
        

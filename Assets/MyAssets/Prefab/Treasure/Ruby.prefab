@@ -135,3 +135,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamType: 2
+  gamParticles: {fileID: 7902293350591093944, guid: 01f3c7e0944cb33458fefe6c5ece1cc1, type: 3}

@@ -143,4 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e689a5e2bfd2143ae514eb440f045a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
+  gamType: 0
+  gamParticles: {fileID: 7902293350591093942, guid: 01f3c7e0944cb33458fefe6c5ece1cc1, type: 3}
