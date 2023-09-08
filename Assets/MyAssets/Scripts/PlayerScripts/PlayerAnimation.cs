@@ -28,22 +28,16 @@ public class PlayerAnimation : MonoBehaviour
 
     Animator animator;
 
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
     public void IdealAnimation()
     {
         animator.SetBool(DIVING, false);
         animator.SetBool(SWIMMING, false);
-      /*  animator.SetBool(HURT, false);*/
     }
     public void DivingAnimation(bool isDiving)
     {
@@ -56,7 +50,6 @@ public class PlayerAnimation : MonoBehaviour
     public void SwimmingAnimation()
     {
         animator.SetBool(SWIMMING, true);
-
 
     }
     public void HurtAnimation()
