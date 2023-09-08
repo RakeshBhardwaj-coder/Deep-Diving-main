@@ -11,6 +11,8 @@ public class StaminaController : MonoBehaviour
     public float staminaDepletionAmount = 10f; // Amount of stamina to deplete when the button is clicked.
     public Image staminaBar;
 
+    public Image staminaBtn;
+
 
     private bool isWait = false;
     void Start()
@@ -41,6 +43,10 @@ public class StaminaController : MonoBehaviour
     {
         if (currentStamina < maxStamina && !isWait)
         {
+           Color currentColor = staminaBtn.color;
+           currentColor.a = 124f;
+           staminaBtn.color = currentColor;
+            
             currentStamina += staminaRegenRate * Time.deltaTime;
             currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
         }
@@ -64,7 +70,11 @@ public class StaminaController : MonoBehaviour
         if (isWait)
         {
             GameManager.Instance.isBoosted = false;
+            Color currentColor = staminaBtn.color;
+            currentColor.a = 0f;
+            staminaBtn.color = currentColor;
         }
+       
 
 
     }

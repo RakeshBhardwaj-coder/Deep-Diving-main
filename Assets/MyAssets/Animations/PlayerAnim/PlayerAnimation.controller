@@ -554,10 +554,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsSwimming
+    m_ConditionEvent: IsDiving
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsDiving
+    m_ConditionEvent: IsSwimming
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -994490072084411236}

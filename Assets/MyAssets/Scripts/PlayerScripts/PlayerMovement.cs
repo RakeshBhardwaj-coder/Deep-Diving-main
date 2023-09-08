@@ -91,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             PlayerAnimation.Instance.SwimmingAnimation();
+            PlayerAnimation.Instance.DivingAnimation(isBoosted);
             TutorialManager.Instance.FirstMove();
 
         }

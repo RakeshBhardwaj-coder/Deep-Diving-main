@@ -82,10 +82,41 @@ public class GameManager : MonoBehaviour
         HealthManager.Instance.ReduceHealth(damage);
         SoundManager.Instance.PlayHitttingAudio(); //sound
         isAttack = false;
-       
 
     }
+    void OnApplicationPause(bool isApplicationPaused)
+    {
+        if (isApplicationPaused)
+        {
+            // The game is being paused.
+            PauseGame();
+          /*  SaveGameState();*/
+        }
+        else
+        {
+            // The game is being resumed.
+          /*  LoadGameState();*/
+            Resume();
+        }
+    }
 
+   /* private void SaveGameState()
+    {
+        // Save relevant game state data using PlayerPrefs or another method.
+        PlayerPrefs.SetInt("Score", yourScore);
+        PlayerPrefs.SetFloat("PlayerPositionX", playerTransform.position.x);
+        // Add more data as needed.
+        PlayerPrefs.Save();
+    }
+
+    private void LoadGameState()
+    {
+        // Load and restore the saved game state data.
+        yourScore = PlayerPrefs.GetInt("Score", 0);
+        float playerPosX = PlayerPrefs.GetFloat("PlayerPositionX", 0f);
+        playerTransform.position = new Vector3(playerPosX, playerTransform.position.y, playerTransform.position.z);
+        // Load more data as needed.
+    }*/
     public void Boost(bool boost)
     {
         isBoosted = boost;
