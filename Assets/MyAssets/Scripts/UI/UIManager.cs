@@ -25,7 +25,21 @@ public class UIManager : MonoBehaviour
         loadingPanel.SetActive(true);
 
         StartCoroutine(LoadGameScene());
+
+        // Check if collected coin data exists and delete it resets the SaveState
+        if (PlayerPrefs.HasKey("CollectedCoins"))
+        {
+            PlayerPrefs.DeleteKey("CollectedCoins");
+        }
+
+    }
+    public void ResumeSaveGame()
+    {
         
+            SceneManager.LoadScene("Game");
+
+
+
     }
     private IEnumerator LoadGameScene()
     {

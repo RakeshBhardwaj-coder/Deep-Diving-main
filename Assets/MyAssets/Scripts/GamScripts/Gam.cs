@@ -36,7 +36,6 @@ public class Gam : MonoBehaviour
     private Gam gam;
     private bool hasCollectedFirstCoin = false;
     public Transform particlesPosition;
-    public Transform emptyGameObject;
     private void Start()
     {
         gam = new Gam(gamType);

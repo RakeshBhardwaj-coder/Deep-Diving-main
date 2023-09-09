@@ -33,6 +33,17 @@ public class GameManager : MonoBehaviour
     public int playerMaxHeart=4;
     public bool isAttack = true;
 
+    //save the game state
+    [System.Serializable]
+    public class GameState
+    {
+        // Define variables to save the game state
+        public int playerScore;
+        public bool isGamePaused;
+        // Add any other variables you want to save here
+    }
+    private GameState currentGameState;
+
 
     public void GameOver()
     {
@@ -40,11 +51,14 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         gameCanvas.SetActive(false);
         gameTutorialCanvas.SetActive(false);
+
     }
     public void PauseGame()
     {
         pauseGameAnim.SetBool("isPaused", true);
-      /*  Time.timeScale = Time.timeScale == 0 ? 1 : 0;*/ // same button for pause and unPause
+        /*  Time.timeScale = Time.timeScale == 0 ? 1 : 0;*/ // same button for pause and unPause
+        
+        //just for check
     }
     public void Resume()
     {
@@ -63,9 +77,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("Game");
+       
         // Implement code to restart the game (e.g., reload the scene)
     }
- 
+
     public void QuitGame()
     {
         // Quit the application
@@ -84,39 +99,11 @@ public class GameManager : MonoBehaviour
         isAttack = false;
 
     }
-    void OnApplicationPause(bool isApplicationPaused)
+    private void OnApplicationPause(bool isPaused)
     {
-        if (isApplicationPaused)
-        {
-            // The game is being paused.
-            PauseGame();
-          /*  SaveGameState();*/
-        }
-        else
-        {
-            // The game is being resumed.
-          /*  LoadGameState();*/
-            Resume();
-        }
+       
     }
 
-   /* private void SaveGameState()
-    {
-        // Save relevant game state data using PlayerPrefs or another method.
-        PlayerPrefs.SetInt("Score", yourScore);
-        PlayerPrefs.SetFloat("PlayerPositionX", playerTransform.position.x);
-        // Add more data as needed.
-        PlayerPrefs.Save();
-    }
-
-    private void LoadGameState()
-    {
-        // Load and restore the saved game state data.
-        yourScore = PlayerPrefs.GetInt("Score", 0);
-        float playerPosX = PlayerPrefs.GetFloat("PlayerPositionX", 0f);
-        playerTransform.position = new Vector3(playerPosX, playerTransform.position.y, playerTransform.position.z);
-        // Load more data as needed.
-    }*/
     public void Boost(bool boost)
     {
         isBoosted = boost;

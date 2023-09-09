@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+    public GameObject player;
     //mobile inputs
     private Vector2 touchStartPosition;
     bool isMoving;
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public float doubleTapTimeThreshold = 0.3f;
     public Joystick joystick;
 
+    public Vector2 playerInitialPosition;
     private void Update()
     {
        
@@ -56,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
        
         normalMoveSpeed = GameManager.Instance.normalMoveSpeed;
         boostedMoveSpeed = GameManager.Instance.boostedMoveSpeed;
+        playerInitialPosition = new Vector2(-5.22f, -.63f);
+        player.transform.position = playerInitialPosition;
 
     }
 

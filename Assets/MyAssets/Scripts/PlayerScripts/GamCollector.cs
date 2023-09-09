@@ -66,7 +66,8 @@ public class GamCollector : MonoBehaviour
             instantiatedObject.Play();
             float particleSystemDuration = gamParticles.main.duration + gamParticles.main.startLifetime.constantMax;
             destroyParticles.DestoryTheParticles(instantiatedObject.gameObject, particleSystemDuration);
-            Destroy(collision.gameObject);
+            /* Destroy(collision.gameObject);*/
+            SaveState.Instance.CollectCoin(collision.gameObject);
         }
     }
 }

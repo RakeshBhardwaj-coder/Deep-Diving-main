@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// using in the pause canvas animation 
 public class PauseTime : MonoBehaviour
 {
     public void TimePause()
