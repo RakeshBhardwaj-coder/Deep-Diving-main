@@ -2791,7 +2791,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1607940454}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayButtonClicked
+        m_MethodName: ResumeSaveGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

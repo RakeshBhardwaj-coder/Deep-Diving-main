@@ -32,19 +32,25 @@ public class HealthManager : MonoBehaviour
     private void Start()
     {
         maxHearts = GameManager.Instance.playerMaxHeart;
-        currentHearts = maxHearts;
+        if (PlayerPrefs.HasKey("PlayerHeart"))
+        {
+            currentHearts = SaveState.Instance.LoadHearts();
+
+        }
+        else
+        {
+            currentHearts = maxHearts;
+        }
         InitializeHearts();
+        
+
     }
 
     void Update()
     {
-      
-     /*   if (currentHearts == 0)
-        {
-            GameManager.Instance.GameOver();
-           *//* vFXManager.SpawnVFX();*//*
 
-        }*/
+      
+      
 
     }
     private void InitializeHearts()
@@ -69,6 +75,7 @@ public class HealthManager : MonoBehaviour
 
             currentHearts--;
             heartsContainer.GetChild(currentHearts).GetComponent<Image>().sprite = emptyHeartSprite;
+            SaveState.Instance.SaveHearts(currentHearts);
            
           
         }
@@ -80,6 +87,8 @@ public class HealthManager : MonoBehaviour
         {
             heartsContainer.GetChild(currentHearts).GetComponent<Image>().sprite = filledHeartSprite;
             currentHearts++;
+            SaveState.Instance.SaveHearts(currentHearts);
+
         }
     }
 }

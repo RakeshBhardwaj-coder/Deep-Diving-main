@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
         gameCanvas.SetActive(false);
         gameTutorialCanvas.SetActive(false);
 
+        SaveState.Instance.DeleteKeys();
+
     }
     public void PauseGame()
     {
@@ -101,7 +103,10 @@ public class GameManager : MonoBehaviour
     }
     private void OnApplicationPause(bool isPaused)
     {
-       
+        if (isPaused)
+        {
+            SaveState.Instance.SavePlayerPosition(SaveState.Instance.player.transform.position);
+        }
     }
 
     public void Boost(bool boost)

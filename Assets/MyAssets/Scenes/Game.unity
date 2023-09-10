@@ -1611,6 +1611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c754890757c5ac448163e137b410c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  check: 0
   allCoins:
   - {fileID: 499042094}
   - {fileID: 596838971}
@@ -1729,6 +1730,8 @@ MonoBehaviour:
   - {fileID: 1214398821}
   - {fileID: 110734002}
   - {fileID: 1447806080}
+  player: {fileID: 178281349}
+  playerInitialPosition: {x: 0, y: 0}
 --- !u!1001 &83764015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3482,10 +3485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  player: {fileID: 178281349}
   doubleTapTimeThreshold: 0.3
   joystick: {fileID: 751764696}
-  playerInitialPosition: {x: 0, y: 0}
 --- !u!50 &178281354
 Rigidbody2D:
   serializedVersion: 4

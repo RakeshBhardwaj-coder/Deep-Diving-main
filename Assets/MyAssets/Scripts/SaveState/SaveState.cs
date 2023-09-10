@@ -25,8 +25,14 @@ public class SaveState : MonoBehaviour
 
     public List<GameObject> allCoins = new List<GameObject>();
     private HashSet<GameObject> collectedCoins = new HashSet<GameObject>();
+    public GameObject player;
+
+    public Vector2 playerInitialPosition;
+
     void Start()
     {
+        playerInitialPosition = new Vector2(-5.22f, -.63f);
+        player.transform.position = playerInitialPosition;
         LoadGame();
     }
 
@@ -38,13 +44,18 @@ public class SaveState : MonoBehaviour
             check = false;
             SceneManager.LoadScene("Game");
         }
-/*        LoadCollectedCoins();*/
-       
-        
+      
+        SavePlayerPosition(player.transform.position);
+
+
+
     }
     void LoadGame()
     {
+        LoadPlayerPosition();
         LoadCollectedCoins();
+        LoadHearts();
+        
 
     }
     // Add a coin to the list when it's collected
@@ -57,9 +68,38 @@ public class SaveState : MonoBehaviour
             SaveCollectedCoins();
         }
     }
-  
-    
-      public void SaveCollectedCoins()
+
+    public int LoadHearts()
+    {
+        int savedHearts = PlayerPrefs.GetInt("PlayerHeart");
+        return savedHearts;
+    }
+    public void SaveHearts(int heart)
+    {
+        PlayerPrefs.SetInt("PlayerHeart", heart);
+        PlayerPrefs.Save();
+    }
+    public void DeleteKeys()
+    {
+        // Check if collected coin data exists and delete it resets the SaveState
+        if (PlayerPrefs.HasKey("CollectedCoins"))
+        {
+            PlayerPrefs.DeleteKey("CollectedCoins");
+        }
+        if (PlayerPrefs.HasKey("PlayerX"))
+        {
+            PlayerPrefs.DeleteKey("PlayerX");
+        }
+        if (PlayerPrefs.HasKey("PlayerY"))
+        {
+            PlayerPrefs.DeleteKey("PlayerY");
+        }
+        if (PlayerPrefs.HasKey("PlayerHeart"))
+        {
+            PlayerPrefs.DeleteKey("PlayerHeart");
+        }
+    }
+    public void SaveCollectedCoins()
       {
           // Convert the HashSet to a List for serialization
           List<string> collectedCoinNames = new List<string>();
@@ -105,26 +145,27 @@ public class SaveState : MonoBehaviour
           }
       }
 
-    /*
-      // Call this function to save the player's position
-      public static void SavePlayerPosition(Vector3 position)
-      {
-          PlayerPrefs.SetFloat("PlayerX", position.x);
-          PlayerPrefs.SetFloat("PlayerY", position.y);
-          PlayerPrefs.SetFloat("PlayerZ", position.z);
-          PlayerPrefs.Save();
-      }
 
-      // Call this function to load the player's position
-      public static Vector3 LoadPlayerPosition()
-      {
-          float playerX = PlayerPrefs.GetFloat("PlayerX");
-          float playerY = PlayerPrefs.GetFloat("PlayerY");
-          float playerZ = PlayerPrefs.GetFloat("PlayerZ");
+    // Call this function to save the player's position
+    public void SavePlayerPosition(Vector2 position)
+    {
+        PlayerPrefs.SetFloat("PlayerX", position.x);
+        PlayerPrefs.SetFloat("PlayerY", position.y);
+        PlayerPrefs.Save();
+    }
 
-          Vector3 playerPosition = new Vector3(playerX, playerY, playerZ);
-          return playerPosition;
-      }*/
+    // Call this function to load the player's position
+    public void LoadPlayerPosition()
+    {
+        if (PlayerPrefs.HasKey("PlayerX") && PlayerPrefs.HasKey("PlayerY"))
+        {
+            float playerX = PlayerPrefs.GetFloat("PlayerX");
+            float playerY = PlayerPrefs.GetFloat("PlayerY");
+
+            Vector2 playerPosition = new Vector2(playerX, playerY);
+            player.transform.position = playerPosition;
+        }
+    }
 
 
 }
