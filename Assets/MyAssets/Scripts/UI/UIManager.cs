@@ -25,12 +25,57 @@ public class UIManager : MonoBehaviour
         loadingPanel.SetActive(true);
 
         StartCoroutine(LoadGameScene());
-        SaveState.Instance.DeleteKeys();
-      
-       
+        DeleteKeys();
+    }
+
+    public void DeleteKeys()
+    {
+        // Check if collected coin data exists and delete it resets the SaveState
+        if (PlayerPrefs.HasKey("CollectedCoins"))
+        {
+            PlayerPrefs.DeleteKey("CollectedCoins");
+        }
+        if (PlayerPrefs.HasKey("PlayerX"))
+        {
+            PlayerPrefs.DeleteKey("PlayerX");
+        }
+        if (PlayerPrefs.HasKey("PlayerY"))
+        {
+            PlayerPrefs.DeleteKey("PlayerY");
+        }
+        if (PlayerPrefs.HasKey("PlayerHeart"))
+        {
+            PlayerPrefs.DeleteKey("PlayerHeart");
+        }
+        if (PlayerPrefs.HasKey("LocalGolds"))
+        {
+            PlayerPrefs.DeleteKey("LocalGolds");
+        }
+        if (PlayerPrefs.HasKey("LocalDiamonds"))
+        {
+            PlayerPrefs.DeleteKey("LocalDiamonds");
+        }
+        if (PlayerPrefs.HasKey("LocalRubys"))
+        {
+            PlayerPrefs.DeleteKey("LocalRubys");
+        }
+
+        if (PlayerPrefs.HasKey("GoldPref2"))
+        {
+            PlayerPrefs.DeleteKey("GoldPref2");
+        }
+        if (PlayerPrefs.HasKey("DiamondPref2"))
+        {
+            PlayerPrefs.DeleteKey("DiamondPref2");
+        }
+        if (PlayerPrefs.HasKey("RubyPref2"))
+        {
+            PlayerPrefs.DeleteKey("RubyPref2");
+        }
+
 
     }
-    
+
     public void ResumeSaveGame()
     {
 
@@ -76,9 +121,9 @@ public class UIManager : MonoBehaviour
     }
     public void ResetTheGame()
     {
-        PlayerPrefs.SetInt("GoldPref", 0); // 0 is the default value if "Score" is not found
-        PlayerPrefs.SetInt("DiamondPref", 0); // 0 is the default value if "Score" is not found
-        PlayerPrefs.SetInt("RubyPref", 0); // 0 is the default value if "Score" is not found
+        PlayerPrefs.SetInt("GoldPref2", 0); // 0 is the default value if "Score" is not found
+        PlayerPrefs.SetInt("DiamondPref2", 0); // 0 is the default value if "Score" is not found
+        PlayerPrefs.SetInt("RubyPref2", 0); // 0 is the default value if "Score" is not found
 
         if (PlayerPrefs.HasKey("HasCollectedFirstCoin"))
         {
@@ -89,6 +134,8 @@ public class UIManager : MonoBehaviour
             PlayerPrefs.SetInt("HasFirstMove", 0);
         }
         PlayerPrefs.Save();
+
+        DeleteKeys();
     }
         public void ClickSound()
     {

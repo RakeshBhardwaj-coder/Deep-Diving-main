@@ -12,17 +12,17 @@ public class ScoreManagerMainMenu : MonoBehaviour
     }
     void Update()
     {
-        if (PlayerPrefs.HasKey("GoldPref"))
+        if (PlayerPrefs.HasKey("GoldPref2"))
         {
-            gamText[0].text = PlayerPrefs.GetInt("GoldPref") + "";
+            gamText[0].text = PlayerPrefs.GetInt("GoldPref2") + "";
         }
-        if (PlayerPrefs.HasKey("DiamondPref"))
+        if (PlayerPrefs.HasKey("DiamondPref2"))
         {
-            gamText[1].text = PlayerPrefs.GetInt("DiamondPref") + "";
+            gamText[1].text = PlayerPrefs.GetInt("DiamondPref2") + "";
         }
-        if (PlayerPrefs.HasKey("RubyPref"))
+        if (PlayerPrefs.HasKey("RubyPref2"))
         {
-            gamText[2].text = PlayerPrefs.GetInt("RubyPref") + "";
+            gamText[2].text = PlayerPrefs.GetInt("RubyPref2") + "";
         }
 
     }

@@ -98,9 +98,36 @@ public class SaveState : MonoBehaviour
         {
             PlayerPrefs.DeleteKey("PlayerHeart");
         }
+        if (PlayerPrefs.HasKey("LocalGolds"))
+        {
+            PlayerPrefs.DeleteKey("LocalGolds");
+        }
+        if (PlayerPrefs.HasKey("LocalDiamonds"))
+        {
+            PlayerPrefs.DeleteKey("LocalDiamonds");
+        }
+        if (PlayerPrefs.HasKey("LocalRubys"))
+        {
+            PlayerPrefs.DeleteKey("LocalRubys");
+        }
+
+        if (PlayerPrefs.HasKey("GoldPref2"))
+        {
+            PlayerPrefs.DeleteKey("GoldPref2");
+        }
+        if (PlayerPrefs.HasKey("DiamondPref2"))
+        {
+            PlayerPrefs.DeleteKey("DiamondPref2");
+        }
+        if (PlayerPrefs.HasKey("RubyPref2"))
+        {
+            PlayerPrefs.DeleteKey("RubyPref2");
+        }
+
+
     }
 
-    
+
     public void SaveLocalGold(int score)
     {
         PlayerPrefs.SetInt("LocalGolds", score);

@@ -43,13 +43,44 @@ public class ScoreManager : MonoBehaviour
     Gam gam;
     void Start()
     {
-        gamText[0].text = "0";
-        gamText[1].text = "0";
-        gamText[2].text = "0";
-       
+
         PlayerPrefs.GetInt("GoldPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.GetInt("DiamondPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.GetInt("RubyPref", 0); // 0 is the default value if "Score" is not found
+
+      
+
+        if (PlayerPrefs.HasKey("GoldPref2"))
+        {
+            gamText[0].text = ""+ PlayerPrefs.GetInt("GoldPref2");
+            gamTextGloble[0].text = ""+ PlayerPrefs.GetInt("GoldPref2");
+
+        }
+        else
+        {
+            gamText[0].text = "0";
+
+        }
+        if (PlayerPrefs.HasKey("DiamondPref2"))
+        {
+            gamText[1].text = "" + PlayerPrefs.GetInt("DiamondPref2");
+            gamTextGloble[1].text = "" + PlayerPrefs.GetInt("DiamondPref2");
+        }
+        else
+        {
+            gamText[1].text = "0";
+
+        }
+        if (PlayerPrefs.HasKey("RubyPref2"))
+        {
+            gamText[2].text = "" + PlayerPrefs.GetInt("RubyPref2");
+            gamTextGloble[2].text = "" + PlayerPrefs.GetInt("RubyPref2");
+        }
+        else
+        {
+            gamText[2].text = "0";
+
+        }
 
         if (PlayerPrefs.HasKey("LocalGolds"))
         {
@@ -112,9 +143,9 @@ public class ScoreManager : MonoBehaviour
 
         }
 
-        goldPref = PlayerPrefs.GetInt("GoldPref", 0);
-        diamondPref = PlayerPrefs.GetInt("DiamondPref", 0);
-        rubyPref = PlayerPrefs.GetInt("RubyPref", 0);
+        goldPref = PlayerPrefs.GetInt("GoldPref2", 0);
+        diamondPref = PlayerPrefs.GetInt("DiamondPref2", 0);
+        rubyPref = PlayerPrefs.GetInt("RubyPref2", 0);
 
 
         if (goldPref >= 60 && diamondPref >= 30 && rubyPref >= 20)
@@ -176,9 +207,10 @@ public class ScoreManager : MonoBehaviour
         {
             gamTextGloble[0].text = localGoldScore+"";
             gamText[0].text = localGoldScore + "";
-            if (localGoldScore > PlayerPrefs.GetInt("GoldPref") )
+            if (localGoldScore > PlayerPrefs.GetInt("GoldPref2") )
             {
-                PlayerPrefs.SetInt("GoldPref", localGoldScore);
+              /*  PlayerPrefs.SetInt("GoldPref", localGoldScore);*/
+                PlayerPrefs.SetInt("GoldPref2", localGoldScore);
                 PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             }
          
@@ -197,9 +229,9 @@ public class ScoreManager : MonoBehaviour
         {
             gamTextGloble[1].text = localDiamondScore + "";
             gamText[1].text = localDiamondScore + "";
-            if (localDiamondScore > PlayerPrefs.GetInt("DiamondPref"))
+            if (localDiamondScore > PlayerPrefs.GetInt("DiamondPref2"))
             {
-                PlayerPrefs.SetInt("DiamondPref", localDiamondScore);
+                PlayerPrefs.SetInt("DiamondPref2", localDiamondScore);
                 PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             }
             localDiamondScore = 0;
@@ -216,9 +248,9 @@ public class ScoreManager : MonoBehaviour
         {
             gamTextGloble[2].text = localRubyScore+ "";
             gamText[2].text = localRubyScore + "";
-            if (localRubyScore > PlayerPrefs.GetInt("DiamondPref"))
+            if (localRubyScore > PlayerPrefs.GetInt("RubyPref2"))
             {
-                PlayerPrefs.SetInt("RubyPref", localRubyScore);
+                PlayerPrefs.SetInt("RubyPref2", localRubyScore);
                 PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             }
             localRubyScore = 0;

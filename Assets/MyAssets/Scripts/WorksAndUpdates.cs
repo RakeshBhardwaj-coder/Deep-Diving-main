@@ -12,6 +12,7 @@
 
 3. backgroundPlaying
      updating 2.0 10/09/2023
+     updating 3.0 10/09/2023
 
 4. playerpositioning
     added 09/09/2023
