@@ -20,10 +20,12 @@ public class HealthManager : MonoBehaviour
             return _instance;
         }
     }
-    public GameObject heartPrefab;
-    public Transform heartsContainer;
+   
     public Sprite emptyHeartSprite;
     public Sprite filledHeartSprite;
+
+    public Image[] heartImages; // Array to hold the heart images
+
 
     public int currentHearts;
     private int maxHearts;
@@ -41,31 +43,43 @@ public class HealthManager : MonoBehaviour
         {
             currentHearts = maxHearts;
         }
-        InitializeHearts();
+        UpdateUI();
         
 
     }
 
-    void Update()
+ // new method
+    private void UpdateUI()
     {
-
-      
-      
-
+        // Loop through the heart images and update their sprites to represent current health
+        for (int i = 0; i < maxHearts; i++)
+        {
+            if (i < currentHearts)
+            {
+                // Heart is full
+                heartImages[i].sprite = filledHeartSprite;
+            }
+            else
+            {
+                // Heart is empty
+                heartImages[i].sprite = emptyHeartSprite;
+            }
+        }
     }
-    private void InitializeHearts()
+    //old method
+  /*  private void InitializeHearts()
     {
         for (int i = 0; i < maxHearts; i++)
         {
-           /* Image heart = Instantiate(heartPrefab, heartsContainer);
-            heart.sprite = filledHeartSprite;*/
+           *//* Image heart = Instantiate(heartPrefab, heartsContainer);
+            heart.sprite = filledHeartSprite;*//*
 
             GameObject heart = Instantiate(heartPrefab, heartsContainer);
             Image heartImage = heart.GetComponent<Image>();
             heartImage.sprite = filledHeartSprite;
             heart.transform.localPosition = Vector3.right * i * (heartImage.rectTransform.sizeDelta.x + 10f);
         }
-    }
+    }*/
 
 
     public void ReduceHealth(int damage)
@@ -74,7 +88,7 @@ public class HealthManager : MonoBehaviour
         {
 
             currentHearts--;
-            heartsContainer.GetChild(currentHearts).GetComponent<Image>().sprite = emptyHeartSprite;
+            UpdateUI();
             SaveState.Instance.SaveHearts(currentHearts);
            
           
@@ -85,8 +99,8 @@ public class HealthManager : MonoBehaviour
     {
         if (currentHearts < maxHearts)
         {
-            heartsContainer.GetChild(currentHearts).GetComponent<Image>().sprite = filledHeartSprite;
             currentHearts++;
+            UpdateUI();
             SaveState.Instance.SaveHearts(currentHearts);
 
         }
