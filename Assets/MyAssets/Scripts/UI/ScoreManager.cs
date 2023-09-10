@@ -59,8 +59,24 @@ public class ScoreManager : MonoBehaviour
         {
             localGoldScore = 0;
         }
+        if (PlayerPrefs.HasKey("LocalDiamonds"))
+        {
+            localDiamondScore = SaveState.Instance.LoadLocalDiamond();
+        }
+        else
+        {
+            localDiamondScore = 0;
+        }
+        if (PlayerPrefs.HasKey("LocalRubys"))
+        {
+            localRubyScore = SaveState.Instance.LoadLocalRuby();
+        }
+        else
+        {
+            localRubyScore = 0;
+        }
 
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     private void Update()
     {
@@ -68,7 +84,6 @@ public class ScoreManager : MonoBehaviour
         {
             localGoldScore = SaveState.Instance.LoadLocalGold();
             PlayFakeGamAnimation(0, true);
-            Debug.Log("Hain to");
 
         }
         else
@@ -76,9 +91,9 @@ public class ScoreManager : MonoBehaviour
             PlayFakeGamAnimation(0, false);
 
         }
-        if (PlayerPrefs.HasKey("LocalDiamond") && localDiamondScore>0)
+        if (PlayerPrefs.HasKey("LocalDiamonds") && localDiamondScore>0)
         {
-            localDiamondScore = SaveState.Instance.LoadLocalGams(1);
+            localDiamondScore = SaveState.Instance.LoadLocalDiamond();
             PlayFakeGamAnimation(1, true);
         }
         else
@@ -88,7 +103,7 @@ public class ScoreManager : MonoBehaviour
         }
         if (PlayerPrefs.HasKey("LocalRuby") && localRubyScore>0)
         {
-            localRubyScore = SaveState.Instance.LoadLocalGams(2);
+            localRubyScore = SaveState.Instance.LoadLocalRuby();
             PlayFakeGamAnimation(2, true);
         }
         else
@@ -139,11 +154,11 @@ public class ScoreManager : MonoBehaviour
                 break;
             case 1:
                 localDiamondScore = score;
-                SaveState.Instance.SaveLocalGams(1, localDiamondScore);
+                SaveState.Instance.SaveLocalRuby(localDiamondScore);
                 break;
             case 2:
                 localRubyScore= score;
-                SaveState.Instance.SaveLocalGams(2, localRubyScore);
+                SaveState.Instance.SaveLocalRuby(localRubyScore);
                 break;
         }
     }
@@ -168,7 +183,7 @@ public class ScoreManager : MonoBehaviour
             }
          
             localGoldScore = 0;
-            SaveState.Instance.SaveLocalGams(0,localGoldScore);
+            SaveState.Instance.SaveLocalGold(localGoldScore); //
             SoundManager.Instance.CoinAudioPlay(3);
 
         }
@@ -188,7 +203,7 @@ public class ScoreManager : MonoBehaviour
                 PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             }
             localDiamondScore = 0;
-            SaveState.Instance.SaveLocalGams(1,  localDiamondScore);
+            SaveState.Instance.SaveLocalDiamond(localDiamondScore); //
             SoundManager.Instance.CoinAudioPlay(4);
 
         }
@@ -207,7 +222,7 @@ public class ScoreManager : MonoBehaviour
                 PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             }
             localRubyScore = 0;
-            SaveState.Instance.SaveLocalGams(2, localRubyScore);
+            SaveState.Instance.SaveLocalRuby(localRubyScore); //
             SoundManager.Instance.CoinAudioPlay(5);
 
         }

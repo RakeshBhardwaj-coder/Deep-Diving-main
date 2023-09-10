@@ -100,54 +100,40 @@ public class SaveState : MonoBehaviour
         }
     }
 
-    public void SaveLocalGams(int i,int score)
-    {
-        switch (i)
-        {
-            case 0:
-                PlayerPrefs.SetInt("LocalGold", score);
-                break;
-            case 1:
-                PlayerPrefs.SetInt("LocalDiamond", score);
-                break;
-            case 2:
-                PlayerPrefs.SetInt("LocalRuby", score);
-                break;
-
-        }
-
-        PlayerPrefs.Save();
-    }
+    
     public void SaveLocalGold(int score)
     {
         PlayerPrefs.SetInt("LocalGolds", score);
-        Debug.Log("" + PlayerPrefs.GetInt("LocalGolds"));
+        PlayerPrefs.Save();
+    }
+    public void SaveLocalDiamond(int score)
+    {
+        PlayerPrefs.SetInt("LocalDiamonds", score);
+        PlayerPrefs.Save();
+    }
+    public void SaveLocalRuby(int score)
+    {
+        PlayerPrefs.SetInt("LocalRubys", score);
         PlayerPrefs.Save();
     }
     public int LoadLocalGold()
     {
-        int value =  PlayerPrefs.GetInt("LocalGolds");
+        int value = PlayerPrefs.GetInt("LocalGolds");
         return value;
     }
-    public int LoadLocalGams(int i)
-    {
-        int localGam=0;
-        switch (i)
-        {
-            case 0:
-                localGam = PlayerPrefs.GetInt("LocalGold");
-                break;
-            case 1:
-                localGam = PlayerPrefs.GetInt("LocalDiamond");
-                break;
-            case 2:
-                localGam = PlayerPrefs.GetInt("LocalRuby");
-                break;
 
-        }
-      
-        return localGam;
+    public int LoadLocalDiamond()
+    {
+        int value = PlayerPrefs.GetInt("LocalDiamonds");
+        return value;
     }
+   
+    public int LoadLocalRuby()
+    {
+        int value = PlayerPrefs.GetInt("LocalRubys");
+        return value;
+    }
+   
     public void SaveCollectedCoins()
       {
           // Convert the HashSet to a List for serialization
