@@ -99,6 +99,55 @@ public class SaveState : MonoBehaviour
             PlayerPrefs.DeleteKey("PlayerHeart");
         }
     }
+
+    public void SaveLocalGams(int i,int score)
+    {
+        switch (i)
+        {
+            case 0:
+                PlayerPrefs.SetInt("LocalGold", score);
+                break;
+            case 1:
+                PlayerPrefs.SetInt("LocalDiamond", score);
+                break;
+            case 2:
+                PlayerPrefs.SetInt("LocalRuby", score);
+                break;
+
+        }
+
+        PlayerPrefs.Save();
+    }
+    public void SaveLocalGold(int score)
+    {
+        PlayerPrefs.SetInt("LocalGolds", score);
+        Debug.Log("" + PlayerPrefs.GetInt("LocalGolds"));
+        PlayerPrefs.Save();
+    }
+    public int LoadLocalGold()
+    {
+        int value =  PlayerPrefs.GetInt("LocalGolds");
+        return value;
+    }
+    public int LoadLocalGams(int i)
+    {
+        int localGam=0;
+        switch (i)
+        {
+            case 0:
+                localGam = PlayerPrefs.GetInt("LocalGold");
+                break;
+            case 1:
+                localGam = PlayerPrefs.GetInt("LocalDiamond");
+                break;
+            case 2:
+                localGam = PlayerPrefs.GetInt("LocalRuby");
+                break;
+
+        }
+      
+        return localGam;
+    }
     public void SaveCollectedCoins()
       {
           // Convert the HashSet to a List for serialization

@@ -24,9 +24,9 @@ public class ScoreManager : MonoBehaviour
     public Transform gamSpawningPosition;
     public TextMeshProUGUI[] gamText;
     public TextMeshProUGUI[] gamTextGloble;
-    int localGoldScore = 0;
-    int localDiamondScore = 0;
-    int localRubyScore = 0;
+    int localGoldScore;
+    int localDiamondScore;
+    int localRubyScore;
     public bool isDiamondUI;
     public bool isGoldUI;
     public bool isRubyUI;
@@ -46,26 +46,39 @@ public class ScoreManager : MonoBehaviour
         gamText[0].text = "0";
         gamText[1].text = "0";
         gamText[2].text = "0";
-
+       
         PlayerPrefs.GetInt("GoldPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.GetInt("DiamondPref", 0); // 0 is the default value if "Score" is not found
         PlayerPrefs.GetInt("RubyPref", 0); // 0 is the default value if "Score" is not found
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (PlayerPrefs.HasKey("LocalGolds"))
+        {
+            localGoldScore = SaveState.Instance.LoadLocalGold();
+        }
+        else
+        {
+            localGoldScore = 0;
+        }
+
+            player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     private void Update()
     {
-        if (localGoldScore > 0)
+        if (PlayerPrefs.HasKey("LocalGolds") && localGoldScore>0)
         {
+            localGoldScore = SaveState.Instance.LoadLocalGold();
             PlayFakeGamAnimation(0, true);
+            Debug.Log("Hain to");
+
         }
         else
         {
             PlayFakeGamAnimation(0, false);
 
         }
-        if (localDiamondScore > 0)
+        if (PlayerPrefs.HasKey("LocalDiamond") && localDiamondScore>0)
         {
+            localDiamondScore = SaveState.Instance.LoadLocalGams(1);
             PlayFakeGamAnimation(1, true);
         }
         else
@@ -73,8 +86,9 @@ public class ScoreManager : MonoBehaviour
             PlayFakeGamAnimation(1, false);
 
         }
-        if (localRubyScore > 0)
+        if (PlayerPrefs.HasKey("LocalRuby") && localRubyScore>0)
         {
+            localRubyScore = SaveState.Instance.LoadLocalGams(2);
             PlayFakeGamAnimation(2, true);
         }
         else
@@ -121,15 +135,19 @@ public class ScoreManager : MonoBehaviour
         {
             case 0:
                 localGoldScore = score;
+                SaveState.Instance.SaveLocalGold(localGoldScore);
                 break;
             case 1:
                 localDiamondScore = score;
+                SaveState.Instance.SaveLocalGams(1, localDiamondScore);
                 break;
             case 2:
                 localRubyScore= score;
+                SaveState.Instance.SaveLocalGams(2, localRubyScore);
                 break;
         }
     }
+    //world UI Collect button.
     public void CollectBtn()
     {
         if (localGoldScore == 0 && isGoldUI)
@@ -150,6 +168,7 @@ public class ScoreManager : MonoBehaviour
             }
          
             localGoldScore = 0;
+            SaveState.Instance.SaveLocalGams(0,localGoldScore);
             SoundManager.Instance.CoinAudioPlay(3);
 
         }
@@ -169,6 +188,7 @@ public class ScoreManager : MonoBehaviour
                 PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             }
             localDiamondScore = 0;
+            SaveState.Instance.SaveLocalGams(1,  localDiamondScore);
             SoundManager.Instance.CoinAudioPlay(4);
 
         }
@@ -187,6 +207,7 @@ public class ScoreManager : MonoBehaviour
                 PlayerPrefs.Save(); // Save changes to disk (optional but can be useful)
             }
             localRubyScore = 0;
+            SaveState.Instance.SaveLocalGams(2, localRubyScore);
             SoundManager.Instance.CoinAudioPlay(5);
 
         }
@@ -213,9 +234,4 @@ public class ScoreManager : MonoBehaviour
        
     }
     
-    public void ResetScore()
-    {
-       
-    }
-
 }
