@@ -185,7 +185,7 @@ public class ScoreManager : MonoBehaviour
                 break;
             case 1:
                 localDiamondScore = score;
-                SaveState.Instance.SaveLocalRuby(localDiamondScore);
+                SaveState.Instance.SaveLocalDiamond(localDiamondScore);
                 break;
             case 2:
                 localRubyScore= score;

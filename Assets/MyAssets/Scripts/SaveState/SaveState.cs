@@ -32,7 +32,11 @@ public class SaveState : MonoBehaviour
     void Start()
     {
         playerInitialPosition = new Vector2(-5.22f, -.63f);
-        player.transform.position = playerInitialPosition;
+        if(player!=null)
+        {
+            player.transform.position = playerInitialPosition;
+
+        }
         LoadGame();
     }
 
@@ -44,8 +48,11 @@ public class SaveState : MonoBehaviour
             check = false;
             SceneManager.LoadScene("Game");
         }
-      
-        SavePlayerPosition(player.transform.position);
+        if(player != null)
+        {
+            SavePlayerPosition(player.transform.position);
+
+        }
 
 
 
