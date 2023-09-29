@@ -19,6 +19,9 @@
 
 5. Heart system
    updating 10/09/2023
+
+6. UI Updated
+    pause menu, gameOverMenu 30/09/2023
  
  
  
