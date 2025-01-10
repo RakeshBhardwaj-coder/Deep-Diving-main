@@ -28,14 +28,21 @@ public class SaveState : MonoBehaviour
     public GameObject player;
 
     public Vector2 playerInitialPosition;
+    // public Vector2 playerCheckPointPosition;
+
 
     void Start()
     {
         playerInitialPosition = new Vector2(-5.22f, -.63f);
-        if(player!=null)
+        float x = PlayerPrefs.GetFloat("CheckpointX", 0f); 
+        float y = PlayerPrefs.GetFloat("CheckpointY", 0f);
+        if(player!=null && (x == 0 || y == 0 ))
         {
             player.transform.position = playerInitialPosition;
 
+        }else{
+            player.transform.position = new Vector2(x, y);
+            
         }
         LoadGame();
     }
